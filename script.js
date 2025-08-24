@@ -45,7 +45,7 @@ const products = [
         name: "ASUS ROG Strix Z790-E",
         description: "Intel Z790晶片組，支援DDR5，WiFi 6E，豪華用料",
         price: 8900,
-        image: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=280&h=180&fit=crop&crop=center",
+        image: "https://images.unsplash.com/photo-1540829917886-91ab031b1764?w=280&h=180&fit=crop&crop=center",
         category: "主機板",
         brand: "ASUS",
         emoji: "⚡"
@@ -55,7 +55,7 @@ const products = [
         name: "MSI MAG B650 TOMAHAWK",
         description: "AMD B650晶片組，支援DDR5，PCIe 5.0，性價比佳",
         price: 6500,
-        image: "https://images.unsplash.com/photo-1595006618256-e24c218b5da2?w=280&h=180&fit=crop&crop=center",
+        image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=280&h=180&fit=crop&crop=center",
         category: "主機板",
         brand: "MSI",
         emoji: "⚙️"
