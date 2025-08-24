@@ -6,7 +6,7 @@ const products = [
         name: "Intel Core i7-13700K",
         description: "16核心24線程，最高5.4GHz，30MB快取，Intel 7製程",
         price: 12500,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61yyg5mCbgL._AC_SL1500_.jpg",
         category: "CPU",
         brand: "Intel",
         emoji: "💻",
@@ -30,7 +30,7 @@ const products = [
         name: "AMD Ryzen 7 7700X",
         description: "Zen 4架構，8核心16線程，最高5.4GHz，32MB L3快取，TSMC 5nm製程",
         price: 11800,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61IYh4hbMpL._AC_SL1500_.jpg",
         category: "CPU",
         brand: "AMD",
         emoji: "🔥",
@@ -54,7 +54,7 @@ const products = [
         name: "Intel Core i5-13600K",
         description: "14核心20線程，最高5.1GHz，24MB快取，混合架構設計",
         price: 9800,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "CPU",
         brand: "Intel",
         emoji: "⚡"
@@ -66,7 +66,7 @@ const products = [
         name: "NVIDIA RTX 4070",
         description: "Ada Lovelace架構，12GB GDDR6X，5888個CUDA核心，AV1編碼支援",
         price: 20500,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "GPU",
         brand: "NVIDIA",
         emoji: "🎮"
@@ -76,7 +76,7 @@ const products = [
         name: "AMD RX 7700 XT",
         description: "RDNA 3架構，12GB GDDR6，54個運算單元，AV1硬體編解碼",
         price: 18900,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "GPU",
         brand: "AMD",
         emoji: "🚀"
@@ -86,7 +86,7 @@ const products = [
         name: "ASUS TUF RTX 4080 Gaming OC",
         description: "16GB GDDR6X，9728個CUDA核心，三風扇設計，軍規認證用料",
         price: 35900,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "GPU",
         brand: "ASUS",
         emoji: "🎯"
@@ -98,7 +98,7 @@ const products = [
         name: "ASUS ROG Strix Z790-E Gaming WiFi",
         description: "Intel Z790晶片組，DDR5-7200+支援，WiFi 6E，2.5Gb乙太網路，PCIe 5.0",
         price: 8900,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "主機板",
         brand: "ASUS",
         emoji: "⚡"
@@ -108,7 +108,7 @@ const products = [
         name: "MSI MAG B650 TOMAHAWK WiFi",
         description: "AMD B650晶片組，DDR5-6000+支援，PCIe 5.0，Wi-Fi 6E，USB 3.2 Gen2 Type-C",
         price: 6500,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "主機板",
         brand: "MSI",
         emoji: "⚙️"
@@ -118,7 +118,7 @@ const products = [
         name: "Gigabyte B760 AORUS Elite AX",
         description: "Intel B760晶片組，DDR5-7600支援，WiFi 6E，2.5GbE網路，RGB Fusion 2.0",
         price: 5800,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "主機板",
         brand: "Gigabyte",
         emoji: "🔧"
@@ -130,7 +130,7 @@ const products = [
         name: "Corsair Vengeance DDR5-5600 32GB Kit",
         description: "雙通道32GB套件(2x16GB)，DDR5-5600，C36延遲，iCUE RGB燈效",
         price: 4800,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "記憶體",
         brand: "Corsair",
         emoji: "🧠"
@@ -140,7 +140,7 @@ const products = [
         name: "G.Skill Trident Z5 DDR5-6000 32GB Kit",
         description: "雙通道32GB套件(2x16GB)，DDR5-6000，C30延遲，RGB燈效，Intel XMP 3.0",
         price: 5200,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "記憶體",
         brand: "G.Skill",
         emoji: "⚡"
@@ -150,7 +150,7 @@ const products = [
         name: "Kingston FURY Beast DDR5-5600 32GB Kit",
         description: "雙通道32GB套件(2x16GB)，DDR5-5600，C40延遲，Intel XMP 3.0認證",
         price: 4200,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "記憶體",
         brand: "Kingston",
         emoji: "🛡️"
@@ -162,7 +162,7 @@ const products = [
         name: "Samsung 980 PRO 2TB NVMe SSD",
         description: "PCIe 4.0 x4，讀取7000MB/s，寫入5100MB/s，V-NAND 3bit MLC，5年保固",
         price: 6200,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "儲存",
         brand: "Samsung",
         emoji: "💾"
@@ -172,7 +172,7 @@ const products = [
         name: "WD Black SN850X 2TB NVMe SSD",
         description: "PCIe 4.0，讀取7300MB/s，寫入6600MB/s，Game Mode 2.0技術，5年保固",
         price: 6800,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "儲存",
         brand: "WD",
         emoji: "🎮"
@@ -182,7 +182,7 @@ const products = [
         name: "Seagate FireCuda 530 2TB NVMe SSD",
         description: "PCIe 4.0，讀取7300MB/s，寫入6900MB/s，3D TLC NAND，5年保固+救援服務",
         price: 6500,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "儲存",
         brand: "Seagate",
         emoji: "🔥"
@@ -194,7 +194,7 @@ const products = [
         name: "Corsair RM850x 850W 80+ Gold",
         description: "850W全模組化，80 Plus Gold效率，135mm風扇，10年保固，ATX 3.0準備就緒",
         price: 4500,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "電源",
         brand: "Corsair",
         emoji: "🔌"
@@ -204,7 +204,7 @@ const products = [
         name: "Seasonic Focus GX-850 850W 80+ Gold",
         description: "850W全模組化，80 Plus Gold效率，Fluid Dynamic Bearing風扇，10年保固",
         price: 4200,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "電源",
         brand: "Seasonic",
         emoji: "⚡"
@@ -214,7 +214,7 @@ const products = [
         name: "be quiet! Straight Power 11 850W 80+ Gold",
         description: "850W全模組化，80 Plus Gold效率，Silent Wings 3風扇，5年保固",
         price: 4600,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "電源",
         brand: "be quiet!",
         emoji: "🔇"
@@ -226,7 +226,7 @@ const products = [
         name: "NZXT H7 Flow 中塔機殼",
         description: "中塔ATX，優化氣流設計，支援360mm水冷，USB 3.2 Gen 2 Type-C前置接口",
         price: 3200,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "機殼",
         brand: "NZXT",
         emoji: "🏠"
@@ -236,7 +236,7 @@ const products = [
         name: "Fractal Design Define 7 中塔機殼",
         description: "中塔ATX，ModuVent技術，支援420mm水冷，隔音材質，無工具安裝",
         price: 4200,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "機殼",
         brand: "Fractal Design",
         emoji: "🎨"
@@ -246,7 +246,7 @@ const products = [
         name: "Cooler Master MasterBox TD500 Mesh",
         description: "中塔ATX，網狀前面板，ARGB風扇x3，支援360mm水冷，鋼化玻璃側板",
         price: 2800,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "機殼",
         brand: "Cooler Master",
         emoji: "💎"
@@ -258,7 +258,7 @@ const products = [
         name: "Noctua NH-D15 雙塔CPU散熱器",
         description: "雙塔散熱器，6支熱導管，NF-A15風扇x2，支援LGA1700/AM5，6年保固",
         price: 2800,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "散熱",
         brand: "Noctua",
         emoji: "🌡️"
@@ -268,7 +268,7 @@ const products = [
         name: "Corsair H150i Elite LCD 360mm 一體式水冷",
         description: "360mm水冷，2.1吋IPS LCD螢幕，ML120 RGB風扇x3，支援LGA1700/AM5",
         price: 5800,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "散熱",
         brand: "Corsair",
         emoji: "❄️"
@@ -278,7 +278,7 @@ const products = [
         name: "Arctic Liquid Freezer II 360 A-RGB",
         description: "360mm一體式水冷，P12 PWM PST A-RGB風扇x3，VRM風扇，6年保固",
         price: 3800,
-        image: null,
+        image: "https://m.media-amazon.com/images/I/61JXD1nL5oL._AC_SL1500_.jpg",
         category: "散熱",
         brand: "Arctic",
         emoji: "🧊"
@@ -339,8 +339,14 @@ function renderProducts() {
         const bgColor = product.bgColor || `linear-gradient(135deg, #667eea, #764ba2)`;
         
         productCard.innerHTML = `
-            <div class="product-image" style="background: ${bgColor}; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
-                ${product.emoji}
+            <div class="product-image">
+                <img src="${product.image}" 
+                     alt="${product.name}" 
+                     style="width: 100%; height: 100%; object-fit: cover;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="image-fallback" style="display: none; width: 100%; height: 100%; background: ${bgColor}; color: white; align-items: center; justify-content: center; font-size: 3rem;">
+                    ${product.emoji}
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">${product.name}</div>
