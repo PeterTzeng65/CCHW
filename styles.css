@@ -239,15 +239,18 @@ header h1 {
     overflow: hidden;
 }
 
-.product-image::before {
-    content: '';
+.image-fallback {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://via.placeholder.com/280x180/667eea/ffffff?text=🖥️') center/cover;
-    opacity: 0.8;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
 }
 
 .product-info {

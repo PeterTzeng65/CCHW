@@ -5,108 +5,120 @@ const products = [
         name: "Intel Core i7-13700K",
         description: "第13代Intel處理器，16核心24線程，基礎頻率3.4GHz",
         price: 12500,
-        image: "https://via.placeholder.com/280x180/3b82f6/ffffff?text=Intel+CPU",
+        image: "https://picsum.photos/280/180?random=1",
         category: "CPU",
-        brand: "Intel"
+        brand: "Intel",
+        emoji: "🔵"
     },
     {
         id: 2,
         name: "AMD Ryzen 7 7700X",
         description: "AMD Zen4架構，8核心16線程，基礎頻率4.5GHz",
         price: 11800,
-        image: "https://via.placeholder.com/280x180/ed1c24/ffffff?text=AMD+CPU",
+        image: "https://picsum.photos/280/180?random=2",
         category: "CPU",
-        brand: "AMD"
+        brand: "AMD",
+        emoji: "🔴"
     },
     {
         id: 3,
         name: "NVIDIA RTX 4070",
         description: "NVIDIA Ada Lovelace架構，12GB GDDR6X顯存",
         price: 20500,
-        image: "https://via.placeholder.com/280x180/76b900/ffffff?text=NVIDIA+GPU",
+        image: "https://picsum.photos/280/180?random=3",
         category: "GPU",
-        brand: "NVIDIA"
+        brand: "NVIDIA",
+        emoji: "🟢"
     },
     {
         id: 4,
         name: "AMD RX 7700 XT",
         description: "AMD RDNA 3架構，12GB GDDR6顯存，優異效能",
         price: 18900,
-        image: "https://via.placeholder.com/280x180/ed1c24/ffffff?text=AMD+GPU",
+        image: "https://picsum.photos/280/180?random=4",
         category: "GPU",
-        brand: "AMD"
+        brand: "AMD",
+        emoji: "🔴"
     },
     {
         id: 5,
         name: "ASUS ROG Strix Z790-E",
         description: "Intel Z790晶片組，支援DDR5，WiFi 6E，豪華用料",
         price: 8900,
-        image: "https://via.placeholder.com/280x180/ff6600/ffffff?text=ASUS+MB",
+        image: "https://picsum.photos/280/180?random=5",
         category: "主機板",
-        brand: "ASUS"
+        brand: "ASUS",
+        emoji: "🟠"
     },
     {
         id: 6,
         name: "MSI MAG B650 TOMAHAWK",
         description: "AMD B650晶片組，支援DDR5，PCIe 5.0，性價比佳",
         price: 6500,
-        image: "https://via.placeholder.com/280x180/ff0000/ffffff?text=MSI+MB",
+        image: "https://picsum.photos/280/180?random=6",
         category: "主機板",
-        brand: "MSI"
+        brand: "MSI",
+        emoji: "🔴"
     },
     {
         id: 7,
         name: "Corsair Vengeance DDR5-5600 32GB",
         description: "DDR5高速記憶體，32GB套件，RGB燈效",
         price: 4800,
-        image: "https://via.placeholder.com/280x180/ffcc00/000000?text=Corsair+RAM",
+        image: "https://picsum.photos/280/180?random=7",
         category: "記憶體",
-        brand: "Corsair"
+        brand: "Corsair",
+        emoji: "🟡"
     },
     {
         id: 8,
         name: "Samsung 980 PRO 2TB",
         description: "PCIe 4.0 NVMe SSD，讀取速度7000MB/s",
         price: 6200,
-        image: "https://via.placeholder.com/280x180/1f4e79/ffffff?text=Samsung+SSD",
+        image: "https://picsum.photos/280/180?random=8",
         category: "儲存",
-        brand: "Samsung"
+        brand: "Samsung",
+        emoji: "🔵"
     },
     {
         id: 9,
         name: "Corsair RM850x",
         description: "850W金牌全模組化電源供應器，10年保固",
         price: 4500,
-        image: "https://via.placeholder.com/280x180/ffcc00/000000?text=Corsair+PSU",
+        image: "https://picsum.photos/280/180?random=9",
         category: "電源",
-        brand: "Corsair"
+        brand: "Corsair",
+        emoji: "🟡"
     },
     {
         id: 10,
         name: "NZXT H7 Flow",
         description: "中塔機殼，優異散熱設計，支援360mm水冷",
         price: 3200,
-        image: "https://via.placeholder.com/280x180/333333/ffffff?text=NZXT+Case",
+        image: "https://picsum.photos/280/180?random=10",
         category: "機殼",
-        brand: "NZXT"
+        brand: "NZXT",
+        emoji: "⚫"
     },
     {
         id: 11,
         name: "Noctua NH-D15",
         description: "雙塔雙風扇CPU散熱器，極靜音設計",
         price: 2800,
-        image: "https://via.placeholder.com/280x180/8b4513/ffffff?text=Noctua+Cool",
+        image: "https://picsum.photos/280/180?random=11",
         category: "散熱",
-        brand: "Noctua"
+        brand: "Noctua",
+        emoji: "🤎"
     },
     {
         id: 12,
         name: "Corsair H150i Elite LCD",
         description: "360mm一體式水冷，LCD顯示器，RGB燈效",
         price: 5800,
-        image: "https://via.placeholder.com/280x180/ffcc00/000000?text=Corsair+AIO",
+        image: "https://picsum.photos/280/180?random=12",
         category: "散熱",
-        brand: "Corsair"
+        brand: "Corsair",
+        emoji: "🟡"
     }
 ];
 
@@ -161,7 +173,13 @@ function renderProducts() {
         productCard.className = 'product-card';
         productCard.innerHTML = `
             <div class="product-image">
-                <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="${product.image}" 
+                     alt="${product.name}" 
+                     style="width: 100%; height: 100%; object-fit: cover;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="image-fallback" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea, #764ba2); color: white; align-items: center; justify-content: center; font-size: 3rem;">
+                    ${product.emoji}
+                </div>
             </div>
             <div class="product-info">
                 <div class="product-name">${product.name}</div>
