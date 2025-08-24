@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>電腦零件購物網站</title>
+    <title>PiPiBUY - 電腦零件購物網站</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>電腦零件專賣店</h1>
+            <h1>🛒 PiPiBUY</h1>
             <div class="cart-icon">
                 <span id="cart-count">0</span>
                 <button id="cart-btn">🛒</button>
@@ -17,18 +17,60 @@
         </div>
     </header>
 
-    <main class="container">
-        <section class="hero">
-            <h2>專業電腦零件，品質保證</h2>
-            <p>提供各種高品質電腦零件，專業測試與組裝服務</p>
-        </section>
-
-        <section class="products" id="products">
-            <h3>產品目錄</h3>
-            <div class="product-grid" id="product-grid">
-                <!-- 產品將由JavaScript動態加載 -->
+    <main class="main-container">
+        <aside class="sidebar">
+            <div class="category-menu">
+                <h3>商品分類</h3>
+                <ul class="category-list">
+                    <li><a href="#" data-category="all" class="active">全部商品</a></li>
+                    <li><a href="#" data-category="CPU">處理器 CPU</a></li>
+                    <li><a href="#" data-category="GPU">顯示卡 GPU</a></li>
+                    <li><a href="#" data-category="主機板">主機板</a></li>
+                    <li><a href="#" data-category="記憶體">記憶體</a></li>
+                    <li><a href="#" data-category="儲存">儲存裝置</a></li>
+                    <li><a href="#" data-category="電源">電源供應器</a></li>
+                    <li><a href="#" data-category="機殼">機殼</a></li>
+                    <li><a href="#" data-category="散熱">散熱器</a></li>
+                </ul>
             </div>
-        </section>
+            <div class="brand-filter">
+                <h4>品牌篩選</h4>
+                <div class="brand-checkboxes">
+                    <label><input type="checkbox" value="Intel"> Intel</label>
+                    <label><input type="checkbox" value="AMD"> AMD</label>
+                    <label><input type="checkbox" value="NVIDIA"> NVIDIA</label>
+                    <label><input type="checkbox" value="ASUS"> ASUS</label>
+                    <label><input type="checkbox" value="MSI"> MSI</label>
+                    <label><input type="checkbox" value="Corsair"> Corsair</label>
+                </div>
+            </div>
+        </aside>
+
+        <div class="content-area">
+            <section class="hero-banner">
+                <div class="banner-content">
+                    <h2>🎯 PiPiBUY 電腦零件專賣店</h2>
+                    <p>高品質電腦零件 | 專業測試組裝 | 客服專線 0800-080-000</p>
+                </div>
+            </section>
+
+            <section class="products" id="products">
+                <div class="products-header">
+                    <h3>熱門商品</h3>
+                    <div class="sort-options">
+                        <select id="sort-select">
+                            <option value="default">預設排序</option>
+                            <option value="price-low">價格低到高</option>
+                            <option value="price-high">價格高到低</option>
+                            <option value="name">商品名稱</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="product-grid" id="product-grid">
+                    <!-- 產品將由JavaScript動態加載 -->
+                </div>
+            </section>
+        </div>
 
         <div class="cart-sidebar" id="cart-sidebar">
             <div class="cart-header">
@@ -118,7 +160,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 電腦零件專賣店 | 客服專線：0800-080-000</p>
+            <p>&copy; 2024 PiPiBUY 電腦零件專賣店 | 客服專線：0800-080-000</p>
         </div>
     </footer>
 

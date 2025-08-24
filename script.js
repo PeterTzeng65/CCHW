@@ -5,96 +5,108 @@ const products = [
         name: "Intel Core i7-13700K",
         description: "第13代Intel處理器，16核心24線程，基礎頻率3.4GHz",
         price: 12500,
-        image: "🔲",
-        category: "CPU"
+        image: "https://via.placeholder.com/280x180/3b82f6/ffffff?text=Intel+CPU",
+        category: "CPU",
+        brand: "Intel"
     },
     {
         id: 2,
         name: "AMD Ryzen 7 7700X",
         description: "AMD Zen4架構，8核心16線程，基礎頻率4.5GHz",
         price: 11800,
-        image: "🔲",
-        category: "CPU"
+        image: "https://via.placeholder.com/280x180/ed1c24/ffffff?text=AMD+CPU",
+        category: "CPU",
+        brand: "AMD"
     },
     {
         id: 3,
         name: "NVIDIA RTX 4070",
         description: "NVIDIA Ada Lovelace架構，12GB GDDR6X顯存",
         price: 20500,
-        image: "🔲",
-        category: "GPU"
+        image: "https://via.placeholder.com/280x180/76b900/ffffff?text=NVIDIA+GPU",
+        category: "GPU",
+        brand: "NVIDIA"
     },
     {
         id: 4,
         name: "AMD RX 7700 XT",
         description: "AMD RDNA 3架構，12GB GDDR6顯存，優異效能",
         price: 18900,
-        image: "🔲",
-        category: "GPU"
+        image: "https://via.placeholder.com/280x180/ed1c24/ffffff?text=AMD+GPU",
+        category: "GPU",
+        brand: "AMD"
     },
     {
         id: 5,
         name: "ASUS ROG Strix Z790-E",
         description: "Intel Z790晶片組，支援DDR5，WiFi 6E，豪華用料",
         price: 8900,
-        image: "🔲",
-        category: "主機板"
+        image: "https://via.placeholder.com/280x180/ff6600/ffffff?text=ASUS+MB",
+        category: "主機板",
+        brand: "ASUS"
     },
     {
         id: 6,
         name: "MSI MAG B650 TOMAHAWK",
         description: "AMD B650晶片組，支援DDR5，PCIe 5.0，性價比佳",
         price: 6500,
-        image: "🔲",
-        category: "主機板"
+        image: "https://via.placeholder.com/280x180/ff0000/ffffff?text=MSI+MB",
+        category: "主機板",
+        brand: "MSI"
     },
     {
         id: 7,
         name: "Corsair Vengeance DDR5-5600 32GB",
         description: "DDR5高速記憶體，32GB套件，RGB燈效",
         price: 4800,
-        image: "🔲",
-        category: "記憶體"
+        image: "https://via.placeholder.com/280x180/ffcc00/000000?text=Corsair+RAM",
+        category: "記憶體",
+        brand: "Corsair"
     },
     {
         id: 8,
         name: "Samsung 980 PRO 2TB",
         description: "PCIe 4.0 NVMe SSD，讀取速度7000MB/s",
         price: 6200,
-        image: "🔲",
-        category: "儲存"
+        image: "https://via.placeholder.com/280x180/1f4e79/ffffff?text=Samsung+SSD",
+        category: "儲存",
+        brand: "Samsung"
     },
     {
         id: 9,
         name: "Corsair RM850x",
         description: "850W金牌全模組化電源供應器，10年保固",
         price: 4500,
-        image: "🔲",
-        category: "電源"
+        image: "https://via.placeholder.com/280x180/ffcc00/000000?text=Corsair+PSU",
+        category: "電源",
+        brand: "Corsair"
     },
     {
         id: 10,
         name: "NZXT H7 Flow",
         description: "中塔機殼，優異散熱設計，支援360mm水冷",
         price: 3200,
-        image: "🔲",
-        category: "機殼"
+        image: "https://via.placeholder.com/280x180/333333/ffffff?text=NZXT+Case",
+        category: "機殼",
+        brand: "NZXT"
     },
     {
         id: 11,
         name: "Noctua NH-D15",
         description: "雙塔雙風扇CPU散熱器，極靜音設計",
         price: 2800,
-        image: "🔲",
-        category: "散熱"
+        image: "https://via.placeholder.com/280x180/8b4513/ffffff?text=Noctua+Cool",
+        category: "散熱",
+        brand: "Noctua"
     },
     {
         id: 12,
         name: "Corsair H150i Elite LCD",
         description: "360mm一體式水冷，LCD顯示器，RGB燈效",
         price: 5800,
-        image: "🔲",
-        category: "散熱"
+        image: "https://via.placeholder.com/280x180/ffcc00/000000?text=Corsair+AIO",
+        category: "散熱",
+        brand: "Corsair"
     }
 ];
 
@@ -102,6 +114,11 @@ const products = [
 let cart = [];
 let isCartOpen = false;
 let isOrderFormOpen = false;
+
+// 篩選和排序狀態
+let currentCategory = 'all';
+let currentBrands = [];
+let currentSort = 'default';
 
 // DOM 元素
 const productGrid = document.getElementById('product-grid');
@@ -131,22 +148,61 @@ document.addEventListener('DOMContentLoaded', function() {
 function renderProducts() {
     productGrid.innerHTML = '';
     
-    products.forEach(product => {
+    let filteredProducts = filterProducts();
+    filteredProducts = sortProducts(filteredProducts);
+    
+    if (filteredProducts.length === 0) {
+        productGrid.innerHTML = '<div class="no-products">沒有找到符合條件的商品</div>';
+        return;
+    }
+    
+    filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
         productCard.innerHTML = `
-            <div class="product-image">${product.image}</div>
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
             <div class="product-info">
                 <div class="product-name">${product.name}</div>
                 <div class="product-description">${product.description}</div>
-                <div class="product-price">NT$ ${product.price.toLocaleString()}</div>
+                <div class="product-price">${product.price.toLocaleString()}</div>
                 <button class="add-to-cart" onclick="addToCart(${product.id})">
-                    加入購物車
+                    🛒 加入購物車
                 </button>
             </div>
         `;
         productGrid.appendChild(productCard);
     });
+}
+
+// 篩選產品
+function filterProducts() {
+    return products.filter(product => {
+        // 分類篩選
+        const categoryMatch = currentCategory === 'all' || product.category === currentCategory;
+        
+        // 品牌篩選
+        const brandMatch = currentBrands.length === 0 || currentBrands.includes(product.brand);
+        
+        return categoryMatch && brandMatch;
+    });
+}
+
+// 排序產品
+function sortProducts(products) {
+    const sortedProducts = [...products];
+    
+    switch (currentSort) {
+        case 'price-low':
+            return sortedProducts.sort((a, b) => a.price - b.price);
+        case 'price-high':
+            return sortedProducts.sort((a, b) => b.price - a.price);
+        case 'name':
+            return sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+        default:
+            return sortedProducts;
+    }
 }
 
 // 設置事件監聽器
@@ -160,6 +216,42 @@ function setupEventListeners() {
     // 服務選項變更時更新總計
     testingService.addEventListener('change', updateOrderSummary);
     assemblyService.addEventListener('change', updateOrderSummary);
+    
+    // 分類篩選
+    document.querySelectorAll('.category-list a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 更新分類按鈕狀態
+            document.querySelectorAll('.category-list a').forEach(a => a.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 更新當前分類
+            currentCategory = this.dataset.category;
+            renderProducts();
+        });
+    });
+    
+    // 品牌篩選
+    document.querySelectorAll('.brand-checkboxes input').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                currentBrands.push(this.value);
+            } else {
+                currentBrands = currentBrands.filter(brand => brand !== this.value);
+            }
+            renderProducts();
+        });
+    });
+    
+    // 排序
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            currentSort = this.value;
+            renderProducts();
+        });
+    }
     
     // 點擊購物車外部關閉
     document.addEventListener('click', function(e) {
