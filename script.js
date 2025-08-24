@@ -119,6 +119,16 @@ const products = [
         category: "散熱",
         brand: "Corsair",
         emoji: "❄️"
+    },
+    {
+        id: 13,
+        name: "ASUS TUF RTX 3090 Gaming OC",
+        description: "24GB GDDR6X顯存，強化散熱設計，軍規用料",
+        price: 45900,
+        image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=280&h=180&fit=crop&crop=center",
+        category: "GPU",
+        brand: "ASUS",
+        emoji: "🎯"
     }
 ];
 
