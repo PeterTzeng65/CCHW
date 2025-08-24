@@ -1,9 +1,10 @@
 // 產品數據
 const products = [
+    // ===== CPU 處理器 =====
     {
         id: 1,
         name: "Intel Core i7-13700K",
-        description: "第13代Intel處理器，16核心24線程，基礎頻率3.4GHz",
+        description: "16核心24線程，最高5.4GHz，30MB快取，Intel 7製程",
         price: 12500,
         image: "https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=280&h=180&fit=crop&crop=center",
         category: "CPU",
@@ -13,7 +14,7 @@ const products = [
     {
         id: 2,
         name: "AMD Ryzen 7 7700X",
-        description: "AMD Zen4架構，8核心16線程，基礎頻率4.5GHz",
+        description: "Zen 4架構，8核心16線程，最高5.4GHz，32MB L3快取，TSMC 5nm製程",
         price: 11800,
         image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=280&h=180&fit=crop&crop=center",
         category: "CPU",
@@ -22,8 +23,20 @@ const products = [
     },
     {
         id: 3,
+        name: "Intel Core i5-13600K",
+        description: "14核心20線程，最高5.1GHz，24MB快取，混合架構設計",
+        price: 9800,
+        image: "https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=280&h=180&fit=crop&crop=center",
+        category: "CPU",
+        brand: "Intel",
+        emoji: "⚡"
+    },
+    
+    // ===== GPU 顯示卡 =====
+    {
+        id: 4,
         name: "NVIDIA RTX 4070",
-        description: "NVIDIA Ada Lovelace架構，12GB GDDR6X顯存",
+        description: "Ada Lovelace架構，12GB GDDR6X，5888個CUDA核心，AV1編碼支援",
         price: 20500,
         image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=280&h=180&fit=crop&crop=center",
         category: "GPU",
@@ -31,9 +44,9 @@ const products = [
         emoji: "🎮"
     },
     {
-        id: 4,
+        id: 5,
         name: "AMD RX 7700 XT",
-        description: "AMD RDNA 3架構，12GB GDDR6顯存，優異效能",
+        description: "RDNA 3架構，12GB GDDR6，54個運算單元，AV1硬體編解碼",
         price: 18900,
         image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=280&h=180&fit=crop&crop=center",
         category: "GPU",
@@ -41,9 +54,21 @@ const products = [
         emoji: "🚀"
     },
     {
-        id: 5,
-        name: "ASUS ROG Strix Z790-E",
-        description: "Intel Z790晶片組，支援DDR5，WiFi 6E，豪華用料",
+        id: 6,
+        name: "ASUS TUF RTX 4080 Gaming OC",
+        description: "16GB GDDR6X，9728個CUDA核心，三風扇設計，軍規認證用料",
+        price: 35900,
+        image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=280&h=180&fit=crop&crop=center",
+        category: "GPU",
+        brand: "ASUS",
+        emoji: "🎯"
+    },
+    
+    // ===== 主機板 =====
+    {
+        id: 7,
+        name: "ASUS ROG Strix Z790-E Gaming WiFi",
+        description: "Intel Z790晶片組，DDR5-7200+支援，WiFi 6E，2.5Gb乙太網路，PCIe 5.0",
         price: 8900,
         image: "https://images.unsplash.com/photo-1540829917886-91ab031b1764?w=280&h=180&fit=crop&crop=center",
         category: "主機板",
@@ -51,9 +76,9 @@ const products = [
         emoji: "⚡"
     },
     {
-        id: 6,
-        name: "MSI MAG B650 TOMAHAWK",
-        description: "AMD B650晶片組，支援DDR5，PCIe 5.0，性價比佳",
+        id: 8,
+        name: "MSI MAG B650 TOMAHAWK WiFi",
+        description: "AMD B650晶片組，DDR5-6000+支援，PCIe 5.0，Wi-Fi 6E，USB 3.2 Gen2 Type-C",
         price: 6500,
         image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=280&h=180&fit=crop&crop=center",
         category: "主機板",
@@ -61,9 +86,21 @@ const products = [
         emoji: "⚙️"
     },
     {
-        id: 7,
-        name: "Corsair Vengeance DDR5-5600 32GB",
-        description: "DDR5高速記憶體，32GB套件，RGB燈效",
+        id: 9,
+        name: "Gigabyte B760 AORUS Elite AX",
+        description: "Intel B760晶片組，DDR5-7600支援，WiFi 6E，2.5GbE網路，RGB Fusion 2.0",
+        price: 5800,
+        image: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=280&h=180&fit=crop&crop=center",
+        category: "主機板",
+        brand: "Gigabyte",
+        emoji: "🔧"
+    },
+    
+    // ===== 記憶體 =====
+    {
+        id: 10,
+        name: "Corsair Vengeance DDR5-5600 32GB Kit",
+        description: "雙通道32GB套件(2x16GB)，DDR5-5600，C36延遲，iCUE RGB燈效",
         price: 4800,
         image: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=280&h=180&fit=crop&crop=center",
         category: "記憶體",
@@ -71,9 +108,31 @@ const products = [
         emoji: "🧠"
     },
     {
-        id: 8,
-        name: "Samsung 980 PRO 2TB",
-        description: "PCIe 4.0 NVMe SSD，讀取速度7000MB/s",
+        id: 11,
+        name: "G.Skill Trident Z5 DDR5-6000 32GB Kit",
+        description: "雙通道32GB套件(2x16GB)，DDR5-6000，C30延遲，RGB燈效，Intel XMP 3.0",
+        price: 5200,
+        image: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=280&h=180&fit=crop&crop=center",
+        category: "記憶體",
+        brand: "G.Skill",
+        emoji: "⚡"
+    },
+    {
+        id: 12,
+        name: "Kingston FURY Beast DDR5-5600 32GB Kit",
+        description: "雙通道32GB套件(2x16GB)，DDR5-5600，C40延遲，Intel XMP 3.0認證",
+        price: 4200,
+        image: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=280&h=180&fit=crop&crop=center",
+        category: "記憶體",
+        brand: "Kingston",
+        emoji: "🛡️"
+    },
+    
+    // ===== 儲存裝置 =====
+    {
+        id: 13,
+        name: "Samsung 980 PRO 2TB NVMe SSD",
+        description: "PCIe 4.0 x4，讀取7000MB/s，寫入5100MB/s，V-NAND 3bit MLC，5年保固",
         price: 6200,
         image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=280&h=180&fit=crop&crop=center",
         category: "儲存",
@@ -81,9 +140,31 @@ const products = [
         emoji: "💾"
     },
     {
-        id: 9,
-        name: "Corsair RM850x",
-        description: "850W金牌全模組化電源供應器，10年保固",
+        id: 14,
+        name: "WD Black SN850X 2TB NVMe SSD",
+        description: "PCIe 4.0，讀取7300MB/s，寫入6600MB/s，Game Mode 2.0技術，5年保固",
+        price: 6800,
+        image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=280&h=180&fit=crop&crop=center",
+        category: "儲存",
+        brand: "WD",
+        emoji: "🎮"
+    },
+    {
+        id: 15,
+        name: "Seagate FireCuda 530 2TB NVMe SSD",
+        description: "PCIe 4.0，讀取7300MB/s，寫入6900MB/s，3D TLC NAND，5年保固+救援服務",
+        price: 6500,
+        image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=280&h=180&fit=crop&crop=center",
+        category: "儲存",
+        brand: "Seagate",
+        emoji: "🔥"
+    },
+    
+    // ===== 電源供應器 =====
+    {
+        id: 16,
+        name: "Corsair RM850x 850W 80+ Gold",
+        description: "850W全模組化，80 Plus Gold效率，135mm風扇，10年保固，ATX 3.0準備就緒",
         price: 4500,
         image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=280&h=180&fit=crop&crop=center",
         category: "電源",
@@ -91,9 +172,31 @@ const products = [
         emoji: "🔌"
     },
     {
-        id: 10,
-        name: "NZXT H7 Flow",
-        description: "中塔機殼，優異散熱設計，支援360mm水冷",
+        id: 17,
+        name: "Seasonic Focus GX-850 850W 80+ Gold",
+        description: "850W全模組化，80 Plus Gold效率，Fluid Dynamic Bearing風扇，10年保固",
+        price: 4200,
+        image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=280&h=180&fit=crop&crop=center",
+        category: "電源",
+        brand: "Seasonic",
+        emoji: "⚡"
+    },
+    {
+        id: 18,
+        name: "be quiet! Straight Power 11 850W 80+ Gold",
+        description: "850W全模組化，80 Plus Gold效率，Silent Wings 3風扇，5年保固",
+        price: 4600,
+        image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=280&h=180&fit=crop&crop=center",
+        category: "電源",
+        brand: "be quiet!",
+        emoji: "🔇"
+    },
+    
+    // ===== 機殼 =====
+    {
+        id: 19,
+        name: "NZXT H7 Flow 中塔機殼",
+        description: "中塔ATX，優化氣流設計，支援360mm水冷，USB 3.2 Gen 2 Type-C前置接口",
         price: 3200,
         image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=280&h=180&fit=crop&crop=center",
         category: "機殼",
@@ -101,9 +204,31 @@ const products = [
         emoji: "🏠"
     },
     {
-        id: 11,
-        name: "Noctua NH-D15",
-        description: "雙塔雙風扇CPU散熱器，極靜音設計",
+        id: 20,
+        name: "Fractal Design Define 7 中塔機殼",
+        description: "中塔ATX，ModuVent技術，支援420mm水冷，隔音材質，無工具安裝",
+        price: 4200,
+        image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=280&h=180&fit=crop&crop=center",
+        category: "機殼",
+        brand: "Fractal Design",
+        emoji: "🎨"
+    },
+    {
+        id: 21,
+        name: "Cooler Master MasterBox TD500 Mesh",
+        description: "中塔ATX，網狀前面板，ARGB風扇x3，支援360mm水冷，鋼化玻璃側板",
+        price: 2800,
+        image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=280&h=180&fit=crop&crop=center",
+        category: "機殼",
+        brand: "Cooler Master",
+        emoji: "💎"
+    },
+    
+    // ===== 散熱器 =====
+    {
+        id: 22,
+        name: "Noctua NH-D15 雙塔CPU散熱器",
+        description: "雙塔散熱器，6支熱導管，NF-A15風扇x2，支援LGA1700/AM5，6年保固",
         price: 2800,
         image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=280&h=180&fit=crop&crop=center",
         category: "散熱",
@@ -111,9 +236,9 @@ const products = [
         emoji: "🌡️"
     },
     {
-        id: 12,
-        name: "Corsair H150i Elite LCD",
-        description: "360mm一體式水冷，LCD顯示器，RGB燈效",
+        id: 23,
+        name: "Corsair H150i Elite LCD 360mm 一體式水冷",
+        description: "360mm水冷，2.1吋IPS LCD螢幕，ML120 RGB風扇x3，支援LGA1700/AM5",
         price: 5800,
         image: "https://images.unsplash.com/photo-1541629017169-0281c95c7a2e?w=280&h=180&fit=crop&crop=center",
         category: "散熱",
@@ -121,14 +246,14 @@ const products = [
         emoji: "❄️"
     },
     {
-        id: 13,
-        name: "ASUS TUF RTX 3090 Gaming OC",
-        description: "24GB GDDR6X顯存，強化散熱設計，軍規用料",
-        price: 45900,
-        image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=280&h=180&fit=crop&crop=center",
-        category: "GPU",
-        brand: "ASUS",
-        emoji: "🎯"
+        id: 24,
+        name: "Arctic Liquid Freezer II 360 A-RGB",
+        description: "360mm一體式水冷，P12 PWM PST A-RGB風扇x3，VRM風扇，6年保固",
+        price: 3800,
+        image: "https://images.unsplash.com/photo-1541629017169-0281c95c7a2e?w=280&h=180&fit=crop&crop=center",
+        category: "散熱",
+        brand: "Arctic",
+        emoji: "🧊"
     }
 ];
 
