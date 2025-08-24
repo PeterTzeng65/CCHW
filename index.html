@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電腦零件購物網站</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>電腦零件專賣店</h1>
+            <div class="cart-icon">
+                <span id="cart-count">0</span>
+                <button id="cart-btn">🛒</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>專業電腦零件，品質保證</h2>
+            <p>提供各種高品質電腦零件，專業測試與組裝服務</p>
+        </section>
+
+        <section class="products" id="products">
+            <h3>產品目錄</h3>
+            <div class="product-grid" id="product-grid">
+                <!-- 產品將由JavaScript動態加載 -->
+            </div>
+        </section>
+
+        <div class="cart-sidebar" id="cart-sidebar">
+            <div class="cart-header">
+                <h3>購物車</h3>
+                <button id="close-cart">×</button>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- 購物車項目 -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    總計: NT$ <span id="cart-total">0</span>
+                </div>
+                <button id="checkout-btn" class="checkout-btn">結帳</button>
+            </div>
+        </div>
+
+        <div class="order-form" id="order-form" style="display: none;">
+            <div class="form-container">
+                <h3>訂單資料</h3>
+                <form id="order-details">
+                    <div class="form-group">
+                        <label for="customer-name">姓名：</label>
+                        <input type="text" id="customer-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email">Email：</label>
+                        <input type="email" id="customer-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">電話：</label>
+                        <input type="tel" id="customer-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-address">地址：</label>
+                        <textarea id="customer-address" required></textarea>
+                    </div>
+                    
+                    <div class="service-options">
+                        <h4>服務選項</h4>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" id="testing-service" value="testing">
+                                測試服務 (+NT$500)
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" id="assembly-service" value="assembly">
+                                組裝服務 (+NT$800)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="terms-section">
+                        <h4>重要聲明</h4>
+                        <div class="terms-content">
+                            <p><strong>測試及組裝服務注意事項：</strong></p>
+                            <ul>
+                                <li>測試及組裝服務皆會將原包裝拆開</li>
+                                <li>因已授權拆開包裝，除不良品故障外，不得於測試及組裝後進行退貨</li>
+                                <li>如有疑問請撥打客服專線：<strong>0800-080-000</strong></li>
+                            </ul>
+                        </div>
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="terms-agreement" required>
+                            我已閱讀並同意上述條款
+                        </label>
+                    </div>
+
+                    <div class="order-summary">
+                        <h4>訂單摘要</h4>
+                        <div id="order-items-summary"></div>
+                        <div class="final-total">
+                            <strong>總金額：NT$ <span id="final-total">0</span></strong>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="cancel-order">取消</button>
+                        <button type="submit">送出訂單</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 電腦零件專賣店 | 客服專線：0800-080-000</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
