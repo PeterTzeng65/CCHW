@@ -339,24 +339,19 @@ function renderProducts() {
         const bgColor = product.bgColor || `linear-gradient(135deg, #667eea, #764ba2)`;
         
         productCard.innerHTML = `
-            <div class="product-image" style="background: ${bgColor}; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; position: relative; cursor: pointer;" onclick="showProductDetails(${product.id})">
+            <div class="product-image" style="background: ${bgColor}; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
                 ${product.emoji}
-                <div class="image-overlay">
-                    <span class="view-details">查看規格</span>
-                </div>
             </div>
             <div class="product-info">
-                <div class="product-name" onclick="showProductDetails(${product.id})" style="cursor: pointer;">${product.name}</div>
+                <div class="product-name">${product.name}</div>
                 <div class="product-description">${product.description}</div>
-                <div class="product-price">${product.price.toLocaleString()}</div>
-                <div class="product-actions">
-                    <button class="view-specs-btn" onclick="showProductDetails(${product.id})">
-                        📋 查看規格
-                    </button>
-                    <button class="add-to-cart" onclick="addToCart(${product.id})">
-                        🛒 加入購物車
-                    </button>
-                </div>
+                <div class="product-price">NT$ ${product.price.toLocaleString()}</div>
+                <button class="add-to-cart" onclick="addToCart(${product.id})">
+                    加入購物車
+                </button>
+                <button class="view-specs-btn" onclick="showProductDetails(${product.id})" style="width: 100%; margin-top: 8px;">
+                    📋 查看規格
+                </button>
             </div>
         `;
         productGrid.appendChild(productCard);
