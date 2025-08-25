@@ -811,6 +811,11 @@ class AdminSystem {
         this.currentProductId = null;
         document.getElementById('productModalTitle').textContent = '新增商品';
         document.getElementById('productForm').reset();
+        
+        // 重置圖片相關元素
+        document.getElementById('productImageFile').value = '';
+        document.getElementById('imagePreview').style.display = 'none';
+        
         document.getElementById('productModal').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
@@ -831,15 +836,22 @@ class AdminSystem {
         document.getElementById('productImage').value = product.image || '';
         document.getElementById('productDescription').value = product.description || '';
         
-        // 處理規格數據
+        // 處理規格數據（轉換為純文字格式）
         if (product.specifications) {
-            try {
-                document.getElementById('productSpecs').value = JSON.stringify(product.specifications, null, 2);
-            } catch (e) {
-                document.getElementById('productSpecs').value = '';
-            }
+            const specsLines = Object.entries(product.specifications)
+                .map(([key, value]) => `${key}: ${value}`)
+                .join('\n');
+            document.getElementById('productSpecs').value = specsLines;
         } else {
             document.getElementById('productSpecs').value = '';
+        }
+        
+        // 處理圖片預覽
+        if (product.image && product.image !== './images/placeholder.svg') {
+            document.getElementById('imagePreview').style.display = 'block';
+            document.getElementById('previewImg').src = product.image;
+        } else {
+            document.getElementById('imagePreview').style.display = 'none';
         }
         
         document.getElementById('productModal').style.display = 'flex';
@@ -873,16 +885,22 @@ class AdminSystem {
             return;
         }
 
-        // 處理規格數據
+        // 處理規格數據（純文字格式）
         let specifications = {};
         const specsText = formData.get('productSpecs')?.trim();
         if (specsText) {
-            try {
-                specifications = JSON.parse(specsText);
-            } catch (e) {
-                alert('規格資料格式錯誤，請使用正確的JSON格式！');
-                return;
-            }
+            // 將純文字規格轉換為物件
+            const lines = specsText.split('\n');
+            lines.forEach(line => {
+                const colonIndex = line.indexOf(':');
+                if (colonIndex > 0) {
+                    const key = line.substring(0, colonIndex).trim();
+                    const value = line.substring(colonIndex + 1).trim();
+                    if (key && value) {
+                        specifications[key] = value;
+                    }
+                }
+            });
         }
 
         // 建立或更新商品數據
@@ -954,9 +972,44 @@ class AdminSystem {
     }
 
     closeProductModal() {
+        // 檢查是否有未保存的變更
+        if (this.hasUnsavedChanges()) {
+            if (!confirm('您有未保存的變更，確定要關閉嗎？')) {
+                return;
+            }
+        }
+        
         document.getElementById('productModal').style.display = 'none';
         document.body.style.overflow = 'auto';
         this.currentProductId = null;
+        this.resetFormChangeTracking();
+    }
+
+    hasUnsavedChanges() {
+        const form = document.getElementById('productForm');
+        const formData = new FormData(form);
+        
+        // 檢查是否有任何欄位有內容
+        for (let [key, value] of formData.entries()) {
+            if (value && value.toString().trim() !== '') {
+                return true;
+            }
+        }
+        
+        // 檢查檔案上傳
+        const fileInput = document.getElementById('productImageFile');
+        if (fileInput && fileInput.files.length > 0) {
+            return true;
+        }
+        
+        return false;
+    }
+
+    resetFormChangeTracking() {
+        // 重置表單變更追蹤
+        const form = document.getElementById('productForm');
+        form.reset();
+        document.getElementById('imagePreview').style.display = 'none';
     }
 
     switchTab(tabName) {
@@ -1085,9 +1138,79 @@ document.getElementById('settingsModal').addEventListener('click', function(e) {
     }
 });
 
-// 點擊商品modal外部關閉
-document.getElementById('productModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeProductModal();
+// 商品modal不允許點擊外部關閉，只能通過按鈕關閉
+// 此行為已移除以防止意外關閉
+
+// 圖片處理函數
+function handleImageUpload(input) {
+    const file = input.files[0];
+    if (!file) return;
+    
+    // 檢查檔案類型
+    if (!file.type.startsWith('image/')) {
+        alert('請選擇圖片檔案！');
+        input.value = '';
+        return;
     }
-});
+    
+    // 創建canvas進行圖片處理
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+    
+    img.onload = function() {
+        // 設定目標尺寸
+        const targetWidth = 800;
+        const targetHeight = 600;
+        
+        // 計算縮放比例，保持比例
+        const scale = Math.min(targetWidth / img.width, targetHeight / img.height);
+        const newWidth = Math.round(img.width * scale);
+        const newHeight = Math.round(img.height * scale);
+        
+        // 設定canvas尺寸
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        
+        // 填充白色背景
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, targetWidth, targetHeight);
+        
+        // 居中繪製圖片
+        const x = (targetWidth - newWidth) / 2;
+        const y = (targetHeight - newHeight) / 2;
+        ctx.drawImage(img, x, y, newWidth, newHeight);
+        
+        // 轉換為WEBP格式並顯示預覽
+        canvas.toBlob(function(blob) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataUrl = e.target.result;
+                
+                // 更新圖片網址欄位
+                document.getElementById('productImage').value = dataUrl;
+                
+                // 顯示預覽
+                const preview = document.getElementById('imagePreview');
+                const previewImg = document.getElementById('previewImg');
+                previewImg.src = dataUrl;
+                preview.style.display = 'block';
+                
+                console.log('圖片已處理：', newWidth + 'x' + newHeight, '轉換為WEBP格式');
+            };
+            reader.readAsDataURL(blob);
+        }, 'image/webp', 0.85); // 85% 品質的WEBP
+    };
+    
+    img.onerror = function() {
+        alert('圖片載入失敗，請選擇其他圖片！');
+        input.value = '';
+    };
+    
+    // 讀取檔案
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}

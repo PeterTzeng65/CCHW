@@ -855,8 +855,14 @@
                             <input type="text" id="productEmoji" name="productEmoji" placeholder="例: 💻" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
                         </div>
                         <div class="form-group">
-                            <label for="productImage">商品圖片網址</label>
-                            <input type="url" id="productImage" name="productImage" placeholder="https://..." style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                            <label for="productImage">商品圖片</label>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <input type="file" id="productImageFile" accept="image/*" onchange="handleImageUpload(this)" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                                <input type="url" id="productImage" name="productImage" placeholder="或輸入圖片網址 https://..." style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                                <div id="imagePreview" style="max-width: 200px; max-height: 150px; border: 1px dashed #ddd; border-radius: 8px; overflow: hidden; display: none;">
+                                    <img id="previewImg" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -866,9 +872,9 @@
                     </div>
                     
                     <div class="form-group" style="margin-top: 20px;">
-                        <label for="productSpecs">商品規格 (JSON格式)</label>
-                        <textarea id="productSpecs" name="productSpecs" rows="6" placeholder='例如: {"處理器": "Intel Core i7", "記憶體": "16GB DDR4"}' style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; font-family: monospace; resize: vertical;"></textarea>
-                        <small style="color: #6c757d; font-size: 12px;">請使用JSON格式輸入規格資訊，或留空</small>
+                        <label for="productSpecs">商品規格</label>
+                        <textarea id="productSpecs" name="productSpecs" rows="6" placeholder='例如:&#10;處理器: Intel Core i7&#10;記憶體: 16GB DDR4&#10;儲存: 1TB SSD&#10;顯示卡: RTX 4070' style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; resize: vertical;"></textarea>
+                        <small style="color: #6c757d; font-size: 12px;">每行一個規格，格式：規格名稱: 規格內容</small>
                     </div>
                     
                     <div style="display: flex; justify-content: flex-end; gap: 15px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
