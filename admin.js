@@ -664,12 +664,15 @@ class AdminSystem {
     // ===== 商品管理功能 =====
 
     loadProducts() {
+        console.log('loadProducts called');
         // 從localStorage載入所有商品
         this.products = this.getAllProducts();
+        console.log('Products loaded:', this.products.length);
         this.filteredProducts = [...this.products];
         this.updateProductStats();
         this.updateProductFilters();
         this.displayProducts();
+        console.log('Products display completed');
     }
 
     getAllProducts() {
@@ -957,20 +960,30 @@ class AdminSystem {
     }
 
     switchTab(tabName) {
+        console.log('switchTab called with:', tabName);
         this.currentTab = tabName;
         
         // 更新按鈕狀態
         document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+        const activeBtn = document.querySelector(`[onclick="switchTab('${tabName}')"]`);
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+            console.log('Button updated for:', tabName);
+        }
         
         // 更新分頁內容
         document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-        document.getElementById(`${tabName}-tab`).classList.add('active');
+        const activeTab = document.getElementById(`${tabName}-tab`);
+        if (activeTab) {
+            activeTab.classList.add('active');
+            console.log('Tab content updated for:', tabName);
+        }
         
         // 載入對應數據
         if (tabName === 'orders') {
             this.loadOrders();
         } else if (tabName === 'products') {
+            console.log('Loading products...');
             this.loadProducts();
         }
     }

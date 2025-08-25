@@ -519,11 +519,11 @@
         }
 
         .tab-content {
-            display: none;
+            display: none !important;
         }
 
         .tab-content.active {
-            display: block;
+            display: block !important;
         }
 
         /* 商品卡片樣式 */
@@ -725,7 +725,7 @@
         </div>
 
         <!-- 商品管理分頁 -->
-        <div id="products-tab" class="tab-content" style="display: none;">
+        <div id="products-tab" class="tab-content">
             <div class="stats">
                 <div class="stat-card clickable" onclick="showProducts('all')">
                     <h3>總商品數</h3>
