@@ -1802,7 +1802,6 @@ function renderProducts() {
     }
     
     console.log('準備渲染', filteredProducts.length, '個商品');
-}
     
     filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
