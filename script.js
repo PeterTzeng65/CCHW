@@ -1710,8 +1710,14 @@ function refreshProductsFromStorage() {
     console.log('重新載入商品數據...');
     const loadedProducts = loadProductsFromStorage();
     
+    console.log('localStorage商品數量:', loadedProducts.length);
+    console.log('當前全域products數量:', window.products.length);
+    
     // 更新全域商品變數
     window.products = loadedProducts;
+    
+    console.log('更新後全域products數量:', window.products.length);
+    console.log('最新商品列表:', window.products.map(p => p.name).slice(-5));
     
     // 重新渲染商品
     renderProducts();
@@ -1777,15 +1783,26 @@ function manualRefreshProducts() {
 
 // 渲染產品
 function renderProducts() {
+    console.log('renderProducts() 被調用');
+    console.log('當前products總數:', products.length);
+    console.log('當前分類篩選:', currentCategory);
+    console.log('當前品牌篩選:', currentBrands);
+    
     productGrid.innerHTML = '';
     
     let filteredProducts = filterProducts();
+    console.log('篩選後商品數量:', filteredProducts.length);
+    
     filteredProducts = sortProducts(filteredProducts);
     
     if (filteredProducts.length === 0) {
+        console.log('沒有商品可顯示');
         productGrid.innerHTML = '<div class="no-products">沒有找到符合條件的商品</div>';
         return;
     }
+    
+    console.log('準備渲染', filteredProducts.length, '個商品');
+}
     
     filteredProducts.forEach(product => {
         const productCard = document.createElement('div');
