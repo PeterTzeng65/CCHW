@@ -135,7 +135,6 @@ class AdminSystem {
         this.orders = this.getAllOrders();
         this.displayOrders();
         this.updateStats();
-        this.updateTabCounts();
     }
 
     getAllOrders() {
@@ -1070,5 +1069,12 @@ const adminSystem = new AdminSystem();
 document.getElementById('settingsModal').addEventListener('click', function(e) {
     if (e.target === this) {
         closeSettings();
+    }
+});
+
+// 點擊商品modal外部關閉
+document.getElementById('productModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeProductModal();
     }
 });
