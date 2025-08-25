@@ -505,6 +505,125 @@
             display: none;
         }
 
+        /* 分頁樣式 */
+        .nav-tab-btn:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2) !important;
+            color: white !important;
+            border-color: transparent !important;
+        }
+
+        .nav-tab-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2) !important;
+            color: white !important;
+            border-color: transparent !important;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 商品卡片樣式 */
+        .product-card {
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .product-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+            border-color: #667eea;
+        }
+
+        .product-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f3f4;
+        }
+
+        .product-name {
+            font-weight: 700;
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .product-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .product-meta-item {
+            background: #f8f9fa;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #28a745;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .product-actions button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .edit-product-btn {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .edit-product-btn:hover {
+            background: #138496;
+            transform: translateY(-1px);
+        }
+
+        .delete-product-btn {
+            background: #dc3545;
+            color: white;
+        }
+
+        .delete-product-btn:hover {
+            background: #c82333;
+            transform: translateY(-1px);
+        }
+
+        /* 商品彈窗樣式 */
+        .product-modal {
+            display: flex !important;
+        }
+
+        .product-modal[style*="display: none"] {
+            display: none !important;
+        }
+
         @media (max-width: 768px) {
             .order-details {
                 grid-template-columns: 1fr;
@@ -512,6 +631,22 @@
             
             .stats {
                 grid-template-columns: 1fr;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+                gap: 8px !important;
+            }
+            
+            .product-filters {
+                flex-direction: column !important;
+                align-items: stretch !important;
+            }
+            
+            .product-filters label {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 5px !important;
             }
         }
     </style>
@@ -539,39 +674,108 @@
     <!-- 管理面板 -->
     <div class="admin-panel" id="adminPanel">
         <div class="header">
-            <h1>PiPiBUY 訂單管理系統</h1>
+            <h1>PiPiBUY 管理系統</h1>
             <div>
                 <button class="settings-btn" onclick="openSettings()">⚙️ 設定</button>
                 <button class="logout-btn" onclick="logout()">登出</button>
             </div>
         </div>
 
-        <div class="stats">
-            <div class="stat-card clickable" onclick="showOrders('all')">
-                <h3>總訂單數</h3>
-                <div class="number" id="totalOrders">0</div>
+        <!-- 導航分頁 -->
+        <div class="nav-tabs" style="background: white; border-radius: 10px; padding: 15px 20px; margin-bottom: 20px; display: flex; gap: 15px;">
+            <button class="nav-tab-btn active" onclick="switchTab('orders')" style="padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; background: linear-gradient(135deg, #667eea, #764ba2); color: white; transition: all 0.3s;">
+                📋 訂單管理
+            </button>
+            <button class="nav-tab-btn" onclick="switchTab('products')" style="padding: 12px 24px; border: 2px solid #667eea; border-radius: 8px; cursor: pointer; font-weight: 600; background: transparent; color: #667eea; transition: all 0.3s;">
+                📦 商品管理
+            </button>
+        </div>
+
+        <!-- 訂單管理分頁 -->
+        <div id="orders-tab" class="tab-content active">
+            <div class="stats">
+                <div class="stat-card clickable" onclick="showOrders('all')">
+                    <h3>總訂單數</h3>
+                    <div class="number" id="totalOrders">0</div>
+                </div>
+                <div class="stat-card clickable" onclick="showOrders('pending')">
+                    <h3>待處理訂單</h3>
+                    <div class="number" id="pendingOrders">0</div>
+                </div>
+                <div class="stat-card clickable" onclick="showOrders('processed')">
+                    <h3>已處理訂單</h3>
+                    <div class="number" id="processedOrders">0</div>
+                </div>
             </div>
-            <div class="stat-card clickable" onclick="showOrders('pending')">
-                <h3>待處理訂單</h3>
-                <div class="number" id="pendingOrders">0</div>
-            </div>
-            <div class="stat-card clickable" onclick="showOrders('processed')">
-                <h3>已處理訂單</h3>
-                <div class="number" id="processedOrders">0</div>
+
+            <div class="orders-section">
+                <div class="orders-header">
+                    <h2 id="ordersTitle">點擊上方統計卡片查看訂單</h2>
+                    <button class="refresh-btn" onclick="loadOrders()">🔄 重新整理</button>
+                </div>
+                
+                <div id="ordersDisplay" class="orders-content">
+                    <div class="no-selection" style="text-align: center; padding: 60px 20px; color: #6c757d;">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">📊</div>
+                        <h3>選擇要查看的訂單類型</h3>
+                        <p>點擊上方的統計卡片來查看對應的訂單列表</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="orders-section">
-            <div class="orders-header">
-                <h2 id="ordersTitle">點擊上方統計卡片查看訂單</h2>
-                <button class="refresh-btn" onclick="loadOrders()">🔄 重新整理</button>
+        <!-- 商品管理分頁 -->
+        <div id="products-tab" class="tab-content" style="display: none;">
+            <div class="stats">
+                <div class="stat-card clickable" onclick="showProducts('all')">
+                    <h3>總商品數</h3>
+                    <div class="number" id="totalProducts">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>商品分類</h3>
+                    <div class="number" id="totalCategories">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>商品品牌</h3>
+                    <div class="number" id="totalBrands">0</div>
+                </div>
             </div>
-            
-            <div id="ordersDisplay" class="orders-content">
-                <div class="no-selection" style="text-align: center; padding: 60px 20px; color: #6c757d;">
-                    <div style="font-size: 4rem; margin-bottom: 20px;">📊</div>
-                    <h3>選擇要查看的訂單類型</h3>
-                    <p>點擊上方的統計卡片來查看對應的訂單列表</p>
+
+            <div class="products-section" style="background: white; border-radius: 10px; padding: 20px;">
+                <div class="products-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 id="productsTitle">商品管理</h2>
+                    <div>
+                        <button class="refresh-btn" onclick="loadProducts()" style="margin-right: 10px;">🔄 重新整理</button>
+                        <button class="add-product-btn" onclick="showAddProductModal()" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">➕ 新增商品</button>
+                    </div>
+                </div>
+                
+                <!-- 商品篩選工具 -->
+                <div class="product-filters" style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        分類:
+                        <select id="categoryFilter" onchange="filterProducts()" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="">全部分類</option>
+                        </select>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        品牌:
+                        <select id="brandFilter" onchange="filterProducts()" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="">全部品牌</option>
+                        </select>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        搜尋:
+                        <input type="text" id="searchFilter" onkeyup="filterProducts()" placeholder="商品名稱..." style="padding: 8px; border: 1px solid #ddd; border-radius: 4px; min-width: 200px;">
+                    </label>
+                </div>
+                
+                <div id="productsDisplay" class="products-content" style="min-height: 400px;">
+                    <div class="no-selection" style="text-align: center; padding: 60px 20px; color: #6c757d;">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">📦</div>
+                        <h3>商品管理中心</h3>
+                        <p>點擊上方「新增商品」按鈕來新增第一個商品</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -597,6 +801,82 @@
                 </div>
                 <button type="submit" class="login-btn">儲存設定</button>
             </form>
+        </div>
+    </div>
+
+    <!-- 商品新增/編輯彈窗 -->
+    <div class="product-modal" id="productModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="product-modal-content" style="background: white; width: 90%; max-width: 800px; max-height: 90vh; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <div class="product-modal-header" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+                <h2 id="productModalTitle" style="margin: 0; font-size: 1.5rem;">新增商品</h2>
+                <button onclick="closeProductModal()" style="background: rgba(255,255,255,0.2); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2rem;">×</button>
+            </div>
+            <div class="product-modal-body" style="padding: 20px; max-height: 70vh; overflow-y: auto;">
+                <form id="productForm">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label for="productName">商品名稱 *</label>
+                            <input type="text" id="productName" name="productName" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">價格 *</label>
+                            <input type="number" id="productPrice" name="productPrice" required min="0" step="1" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div class="form-group">
+                            <label for="productCategory">商品分類 *</label>
+                            <select id="productCategory" name="productCategory" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                                <option value="">請選擇分類</option>
+                                <option value="CPU">處理器 CPU</option>
+                                <option value="GPU">顯示卡 GPU</option>
+                                <option value="主機板">主機板</option>
+                                <option value="記憶體">記憶體</option>
+                                <option value="儲存">儲存裝置</option>
+                                <option value="電源">電源供應器</option>
+                                <option value="機殼">機殼</option>
+                                <option value="散熱">散熱器</option>
+                                <option value="散熱膏">散熱膏</option>
+                                <option value="系統風扇">系統風扇</option>
+                                <option value="滑鼠">滑鼠</option>
+                                <option value="鍵盤">鍵盤</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productBrand">品牌 *</label>
+                            <input type="text" id="productBrand" name="productBrand" required style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div class="form-group">
+                            <label for="productEmoji">商品圖示</label>
+                            <input type="text" id="productEmoji" name="productEmoji" placeholder="例: 💻" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">商品圖片網址</label>
+                            <input type="url" id="productImage" name="productImage" placeholder="https://..." style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="productDescription">商品描述</label>
+                        <textarea id="productDescription" name="productDescription" rows="3" placeholder="請輸入商品詳細描述..." style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical;"></textarea>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="productSpecs">商品規格 (JSON格式)</label>
+                        <textarea id="productSpecs" name="productSpecs" rows="6" placeholder='例如: {"處理器": "Intel Core i7", "記憶體": "16GB DDR4"}' style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; font-family: monospace; resize: vertical;"></textarea>
+                        <small style="color: #6c757d; font-size: 12px;">請使用JSON格式輸入規格資訊，或留空</small>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: flex-end; gap: 15px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                        <button type="button" onclick="closeProductModal()" style="padding: 12px 24px; border: 2px solid #6c757d; background: transparent; color: #6c757d; border-radius: 8px; cursor: pointer; font-weight: 600;">取消</button>
+                        <button type="submit" style="padding: 12px 24px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">儲存商品</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

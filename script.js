@@ -1685,12 +1685,42 @@ const finalTotal = document.getElementById('final-total');
 const testingService = document.getElementById('testing-service');
 const assemblyService = document.getElementById('assembly-service');
 
+// 載入商品數據的函數
+function loadProductsFromStorage() {
+    try {
+        const productsData = localStorage.getItem('productsDatabase');
+        if (productsData) {
+            const loadedProducts = JSON.parse(productsData);
+            if (loadedProducts && loadedProducts.length > 0) {
+                console.log(`從 localStorage 載入了 ${loadedProducts.length} 個商品`);
+                return loadedProducts;
+            }
+        }
+    } catch (error) {
+        console.error('載入商品數據時發生錯誤:', error);
+    }
+    
+    // 如果 localStorage 中沒有數據，返回原始的硬編碼數據
+    console.log('使用硬編碼的商品數據');
+    return products;
+}
+
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
-    renderProducts();
-    updateCartUI();
-    setupEventListeners();
-    updateBrandFilter();
+    // 等待數據遷移完成後再初始化
+    setTimeout(() => {
+        // 載入商品數據（優先使用 localStorage 中的數據）
+        const loadedProducts = loadProductsFromStorage();
+        if (loadedProducts !== products) {
+            // 如果載入的是新數據，替換全域變數
+            window.products = loadedProducts;
+        }
+        
+        renderProducts();
+        updateCartUI();
+        setupEventListeners();
+        updateBrandFilter();
+    }, 1100); // 略晚於遷移腳本的執行時間
 });
 
 // 渲染產品

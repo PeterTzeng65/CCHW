@@ -4,9 +4,13 @@ class AdminSystem {
     constructor() {
         this.currentUser = null;
         this.orders = [];
+        this.products = [];
         this.currentPage = 1;
         this.ordersPerPage = 10;
         this.currentOrderType = null;
+        this.currentTab = 'orders';
+        this.currentProductId = null;
+        this.filteredProducts = [];
         this.init();
     }
 
@@ -19,6 +23,9 @@ class AdminSystem {
         
         // 載入預設管理員帳號（如果不存在）
         this.initDefaultAdmin();
+        
+        // 初始化商品數據庫
+        this.initializeProductsDatabase();
     }
 
     setupEventListeners() {
@@ -32,6 +39,12 @@ class AdminSystem {
         document.getElementById('settingsForm').addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleSettings();
+        });
+
+        // 商品表單
+        document.getElementById('productForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleProductSubmit();
         });
     }
 
@@ -648,6 +661,338 @@ class AdminSystem {
             delete window.closeOrderDetail;
         };
     }
+
+    // ===== 商品管理功能 =====
+
+    loadProducts() {
+        // 從localStorage載入所有商品
+        this.products = this.getAllProducts();
+        this.filteredProducts = [...this.products];
+        this.updateProductStats();
+        this.updateProductFilters();
+        this.displayProducts();
+    }
+
+    getAllProducts() {
+        const productsData = localStorage.getItem('productsDatabase');
+        if (productsData) {
+            try {
+                return JSON.parse(productsData);
+            } catch (e) {
+                console.error('Error parsing products data:', e);
+                return [];
+            }
+        }
+        return [];
+    }
+
+    saveProducts() {
+        try {
+            localStorage.setItem('productsDatabase', JSON.stringify(this.products));
+            return true;
+        } catch (e) {
+            console.error('Error saving products:', e);
+            alert('保存商品數據時發生錯誤！');
+            return false;
+        }
+    }
+
+    updateProductStats() {
+        const totalProducts = this.products.length;
+        const categories = [...new Set(this.products.map(p => p.category))];
+        const brands = [...new Set(this.products.map(p => p.brand))];
+        
+        document.getElementById('totalProducts').textContent = totalProducts;
+        document.getElementById('totalCategories').textContent = categories.length;
+        document.getElementById('totalBrands').textContent = brands.length;
+    }
+
+    updateProductFilters() {
+        const categories = [...new Set(this.products.map(p => p.category))].sort();
+        const brands = [...new Set(this.products.map(p => p.brand))].sort();
+        
+        // 更新分類選項
+        const categoryFilter = document.getElementById('categoryFilter');
+        categoryFilter.innerHTML = '<option value="">全部分類</option>';
+        categories.forEach(category => {
+            categoryFilter.innerHTML += `<option value="${category}">${category}</option>`;
+        });
+        
+        // 更新品牌選項
+        const brandFilter = document.getElementById('brandFilter');
+        brandFilter.innerHTML = '<option value="">全部品牌</option>';
+        brands.forEach(brand => {
+            brandFilter.innerHTML += `<option value="${brand}">${brand}</option>`;
+        });
+    }
+
+    filterProducts() {
+        const categoryFilter = document.getElementById('categoryFilter').value;
+        const brandFilter = document.getElementById('brandFilter').value;
+        const searchFilter = document.getElementById('searchFilter').value.toLowerCase();
+        
+        this.filteredProducts = this.products.filter(product => {
+            const categoryMatch = !categoryFilter || product.category === categoryFilter;
+            const brandMatch = !brandFilter || product.brand === brandFilter;
+            const searchMatch = !searchFilter || 
+                product.name.toLowerCase().includes(searchFilter) ||
+                product.description?.toLowerCase().includes(searchFilter) ||
+                product.brand.toLowerCase().includes(searchFilter);
+                
+            return categoryMatch && brandMatch && searchMatch;
+        });
+        
+        this.displayProducts();
+    }
+
+    displayProducts() {
+        const productsDisplay = document.getElementById('productsDisplay');
+        
+        if (this.filteredProducts.length === 0) {
+            productsDisplay.innerHTML = `
+                <div style="text-align: center; padding: 60px 20px; color: #6c757d;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">📦</div>
+                    <h3>暫無商品</h3>
+                    <p>點擊上方「新增商品」按鈕來新增第一個商品</p>
+                </div>
+            `;
+            return;
+        }
+
+        const productListHTML = this.filteredProducts.map(product => this.createProductCardHTML(product)).join('');
+        
+        productsDisplay.innerHTML = `
+            <div class="products-list">
+                ${productListHTML}
+            </div>
+        `;
+    }
+
+    createProductCardHTML(product) {
+        const bgColor = product.bgColor || 'linear-gradient(135deg, #667eea, #764ba2)';
+        
+        return `
+            <div class="product-card">
+                <div class="product-card-header">
+                    <div>
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-meta">
+                            <span class="product-meta-item">分類: ${product.category}</span>
+                            <span class="product-meta-item">品牌: ${product.brand}</span>
+                            <span class="product-meta-item">ID: ${product.id}</span>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="product-price">NT$ ${product.price?.toLocaleString() || '0'}</div>
+                        <div class="product-actions" style="margin-top: 10px;">
+                            <button class="edit-product-btn" onclick="editProduct(${product.id})">
+                                ✏️ 編輯
+                            </button>
+                            <button class="delete-product-btn" onclick="deleteProduct(${product.id})">
+                                🗑️ 刪除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 15px;">
+                    <p style="color: #6c757d; line-height: 1.5; margin-bottom: 10px;">
+                        ${product.description || '無商品描述'}
+                    </p>
+                    ${product.emoji ? `<div style="font-size: 2rem; margin-top: 10px;">${product.emoji}</div>` : ''}
+                </div>
+            </div>
+        `;
+    }
+
+    showAddProductModal() {
+        this.currentProductId = null;
+        document.getElementById('productModalTitle').textContent = '新增商品';
+        document.getElementById('productForm').reset();
+        document.getElementById('productModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    editProduct(productId) {
+        this.currentProductId = productId;
+        const product = this.products.find(p => p.id === productId);
+        if (!product) return;
+
+        document.getElementById('productModalTitle').textContent = '編輯商品';
+        
+        // 填入表單數據
+        document.getElementById('productName').value = product.name || '';
+        document.getElementById('productPrice').value = product.price || '';
+        document.getElementById('productCategory').value = product.category || '';
+        document.getElementById('productBrand').value = product.brand || '';
+        document.getElementById('productEmoji').value = product.emoji || '';
+        document.getElementById('productImage').value = product.image || '';
+        document.getElementById('productDescription').value = product.description || '';
+        
+        // 處理規格數據
+        if (product.specifications) {
+            try {
+                document.getElementById('productSpecs').value = JSON.stringify(product.specifications, null, 2);
+            } catch (e) {
+                document.getElementById('productSpecs').value = '';
+            }
+        } else {
+            document.getElementById('productSpecs').value = '';
+        }
+        
+        document.getElementById('productModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    deleteProduct(productId) {
+        const product = this.products.find(p => p.id === productId);
+        if (!product) return;
+
+        if (confirm(`確定要刪除商品「${product.name}」嗎？\n此操作無法復原！`)) {
+            this.products = this.products.filter(p => p.id !== productId);
+            if (this.saveProducts()) {
+                this.loadProducts();
+                alert('商品已刪除！');
+            }
+        }
+    }
+
+    handleProductSubmit() {
+        const formData = new FormData(document.getElementById('productForm'));
+        
+        // 驗證必填欄位
+        const name = formData.get('productName')?.trim();
+        const price = parseInt(formData.get('productPrice'));
+        const category = formData.get('productCategory');
+        const brand = formData.get('productBrand')?.trim();
+        
+        if (!name || !price || !category || !brand) {
+            alert('請填寫所有必填欄位！');
+            return;
+        }
+
+        // 處理規格數據
+        let specifications = {};
+        const specsText = formData.get('productSpecs')?.trim();
+        if (specsText) {
+            try {
+                specifications = JSON.parse(specsText);
+            } catch (e) {
+                alert('規格資料格式錯誤，請使用正確的JSON格式！');
+                return;
+            }
+        }
+
+        // 建立或更新商品數據
+        const productData = {
+            id: this.currentProductId || this.getNextProductId(),
+            name: name,
+            price: price,
+            category: category,
+            brand: brand,
+            emoji: formData.get('productEmoji')?.trim() || '📦',
+            image: formData.get('productImage')?.trim() || './images/placeholder.svg',
+            description: formData.get('productDescription')?.trim() || '',
+            specifications: Object.keys(specifications).length > 0 ? specifications : undefined,
+            bgColor: this.getBrandColor(brand)
+        };
+
+        if (this.currentProductId) {
+            // 編輯現有商品
+            const index = this.products.findIndex(p => p.id === this.currentProductId);
+            if (index !== -1) {
+                this.products[index] = productData;
+            }
+        } else {
+            // 新增商品
+            this.products.push(productData);
+        }
+
+        // 保存並更新界面
+        if (this.saveProducts()) {
+            this.closeProductModal();
+            this.loadProducts();
+            alert(this.currentProductId ? '商品已更新！' : '商品已新增！');
+        }
+    }
+
+    getNextProductId() {
+        const existingIds = this.products.map(p => p.id).filter(id => typeof id === 'number');
+        return existingIds.length > 0 ? Math.max(...existingIds) + 1 : 1;
+    }
+
+    getBrandColor(brand) {
+        const brandColors = {
+            'Intel': 'linear-gradient(135deg, #0071c5, #0044aa)',
+            'AMD': 'linear-gradient(135deg, #ed1c24, #b91c1c)',
+            'NVIDIA': 'linear-gradient(135deg, #00d4aa, #007bff)',
+            'ASUS': 'linear-gradient(135deg, #00d4aa, #007bff)',
+            'MSI': 'linear-gradient(135deg, #ff6b35, #f7931e)',
+            'Gigabyte': 'linear-gradient(135deg, #00d4aa, #007bff)',
+            'Corsair': 'linear-gradient(135deg, #ffd700, #ffb347)',
+            'Samsung': 'linear-gradient(135deg, #1f8ef1, #1565c0)',
+            'PowerColor': 'linear-gradient(135deg, #ed1c24, #b91c1c)',
+            'G.Skill': 'linear-gradient(135deg, #ff6b35, #f7931e)',
+            'Kingston': 'linear-gradient(135deg, #000000, #333333)',
+            'WD': 'linear-gradient(135deg, #000000, #333333)',
+            'Seagate': 'linear-gradient(135deg, #4fc3f7, #29b6f6)',
+            'Seasonic': 'linear-gradient(135deg, #4fc3f7, #29b6f6)',
+            'be quiet!': 'linear-gradient(135deg, #424242, #212121)',
+            'NZXT': 'linear-gradient(135deg, #667eea, #764ba2)',
+            'Fractal Design': 'linear-gradient(135deg, #667eea, #764ba2)',
+            'Cooler Master': 'linear-gradient(135deg, #667eea, #764ba2)',
+            'Noctua': 'linear-gradient(135deg, #8d6e63, #6d4c41)',
+            'Arctic': 'linear-gradient(135deg, #4fc3f7, #29b6f6)',
+            'Thermal Grizzly': 'linear-gradient(135deg, #ff6b35, #f7931e)',
+            'Logitech': 'linear-gradient(135deg, #00d4ff, #0099cc)',
+            'Razer': 'linear-gradient(135deg, #00ff88, #00cc66)',
+            'SteelSeries': 'linear-gradient(135deg, #ff6b35, #f7931e)'
+        };
+        return brandColors[brand] || 'linear-gradient(135deg, #667eea, #764ba2)';
+    }
+
+    closeProductModal() {
+        document.getElementById('productModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+        this.currentProductId = null;
+    }
+
+    switchTab(tabName) {
+        this.currentTab = tabName;
+        
+        // 更新按鈕狀態
+        document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+        
+        // 更新分頁內容
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(`${tabName}-tab`).classList.add('active');
+        
+        // 載入對應數據
+        if (tabName === 'orders') {
+            this.loadOrders();
+        } else if (tabName === 'products') {
+            this.loadProducts();
+        }
+    }
+
+    // 初始化商品數據庫（從現有的products陣列遷移）
+    initializeProductsDatabase() {
+        const existingProducts = localStorage.getItem('productsDatabase');
+        if (existingProducts) {
+            console.log('商品數據庫已存在，跳過初始化');
+            return;
+        }
+
+        // 這裡應該包含所有現有的商品數據
+        // 從 script.js 中遷移過來
+        console.log('初始化商品數據庫...');
+        
+        // 先設置一個空的數組，稍後會從 script.js 中遷移數據
+        localStorage.setItem('productsDatabase', JSON.stringify([]));
+        
+        console.log('商品數據庫初始化完成');
+    }
 }
 
 // 全域函數
@@ -682,6 +1027,40 @@ function changePage(page) {
 
 function showOrderDetail(orderId) {
     adminSystem.showOrderDetail(orderId);
+}
+
+// 商品管理全域函數
+function switchTab(tabName) {
+    adminSystem.switchTab(tabName);
+}
+
+function loadProducts() {
+    adminSystem.loadProducts();
+}
+
+function showProducts(type) {
+    // 這裡可以實現不同類型的商品顯示邏輯
+    adminSystem.loadProducts();
+}
+
+function filterProducts() {
+    adminSystem.filterProducts();
+}
+
+function showAddProductModal() {
+    adminSystem.showAddProductModal();
+}
+
+function editProduct(productId) {
+    adminSystem.editProduct(productId);
+}
+
+function deleteProduct(productId) {
+    adminSystem.deleteProduct(productId);
+}
+
+function closeProductModal() {
+    adminSystem.closeProductModal();
 }
 
 // 初始化系統
