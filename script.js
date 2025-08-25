@@ -71,6 +71,117 @@ const products = [
             "品牌": "Intel 英特爾"
         }
     },
+    {
+        id: 38,
+        name: "Intel Core i9-14900K",
+        description: "24核心（8P+16E），最高6.0GHz，第14代Intel Core處理器，LGA1700插槽",
+        price: 17500,
+        image: "https://img.pchome.com.tw/cs/items/DRAI9CA900I9KLM/000001_1736500000.jpg",
+        category: "CPU",
+        brand: "Intel",
+        emoji: "💻",
+        bgColor: "linear-gradient(135deg, #0071c5, #0044aa)",
+        specifications: {
+            "處理器編號": "Core i9-14900K",
+            "核心": "24 (8P+16E)",
+            "基礎頻率": "3.2 GHz",
+            "最大睿頻": "6.0 GHz",
+            "快取記憶體": "36 MB Intel® Smart Cache",
+            "插槽": "LGA1700",
+            "系列": "第14代Intel Core",
+            "TDP": "125W",
+            "品牌": "Intel 英特爾"
+        }
+    },
+    {
+        id: 39,
+        name: "Intel Core i7-13700K",
+        description: "16核心（8P+8E），最高5.4GHz，第13代Intel Core處理器，LGA1700插槽",
+        price: 13900,
+        image: "https://img.pchome.com.tw/cs/items/DRAI7KA900I7KLM/000001_1736600000.jpg",
+        category: "CPU",
+        brand: "Intel",
+        emoji: "💻",
+        bgColor: "linear-gradient(135deg, #0071c5, #0044aa)",
+        specifications: {
+            "處理器編號": "Core i7-13700K",
+            "核心": "16 (8P+8E)",
+            "基礎頻率": "3.4 GHz",
+            "最大睿頻": "5.4 GHz",
+            "快取記憶體": "30 MB Intel® Smart Cache",
+            "插槽": "LGA1700",
+            "系列": "第13代Intel Core",
+            "TDP": "125W",
+            "品牌": "Intel 英特爾"
+        }
+    },
+    {
+        id: 40,
+        name: "AMD Ryzen 9 7950X",
+        description: "16核心32線程，4.5GHz基頻，最高5.7GHz，Zen 4架構，AM5插槽",
+        price: 19800,
+        image: "https://img.pchome.com.tw/cs/items/DSBC0CA900R9X7/000001_1745700000.jpg",
+        category: "CPU",
+        brand: "AMD",
+        emoji: "🔥",
+        bgColor: "linear-gradient(135deg, #ed1c24, #b91c1c)",
+        specifications: {
+            "處理器": "AMD Ryzen™ 9 7950X",
+            "核心/線程": "16核心/32線程",
+            "基礎時脈": "4.5 GHz",
+            "最大加速時脈": "5.7 GHz",
+            "快取記憶體": "80MB",
+            "TDP": "170W",
+            "架構": "Zen 4",
+            "插槽": "AM5",
+            "品牌": "AMD"
+        }
+    },
+    {
+        id: 41,
+        name: "AMD Ryzen 7 7800X3D",
+        description: "8核心16線程，4.2GHz基頻，3D V-Cache技術，96MB快取，遊戲最佳化",
+        price: 16500,
+        image: "https://img.pchome.com.tw/cs/items/DSBC0DA900R7X3D/000001_1745800000.jpg",
+        category: "CPU",
+        brand: "AMD",
+        emoji: "🔥",
+        bgColor: "linear-gradient(135deg, #ed1c24, #b91c1c)",
+        specifications: {
+            "處理器": "AMD Ryzen™ 7 7800X3D",
+            "核心/線程": "8核心/16線程",
+            "基礎時脈": "4.2 GHz",
+            "最大加速時脈": "5.0 GHz",
+            "快取記憶體": "96MB (含3D V-Cache)",
+            "TDP": "120W",
+            "架構": "Zen 4",
+            "插槽": "AM5",
+            "特色": "遊戲最佳化處理器",
+            "品牌": "AMD"
+        }
+    },
+    {
+        id: 42,
+        name: "AMD Ryzen 5 7600X",
+        description: "6核心12線程，4.7GHz基頻，最高5.3GHz，Zen 4架構，AM5插槽",
+        price: 8900,
+        image: "https://img.pchome.com.tw/cs/items/DSBC0EA900R5X7/000001_1745900000.jpg",
+        category: "CPU",
+        brand: "AMD",
+        emoji: "🔥",
+        bgColor: "linear-gradient(135deg, #ed1c24, #b91c1c)",
+        specifications: {
+            "處理器": "AMD Ryzen™ 5 7600X",
+            "核心/線程": "6核心/12線程",
+            "基礎時脈": "4.7 GHz",
+            "最大加速時脈": "5.3 GHz",
+            "快取記憶體": "38MB",
+            "TDP": "105W",
+            "架構": "Zen 4",
+            "插槽": "AM5",
+            "品牌": "AMD"
+        }
+    },
     
     // ===== GPU 顯示卡 =====
     {
@@ -170,6 +281,252 @@ const products = [
             "版本": "超頻版 OC"
         }
     },
+    {
+        id: 43,
+        name: "GIGABYTE RTX4060 Ti GAMING OC 16G",
+        description: "NVIDIA GeForce RTX 4060 Ti，16GB GDDR6，三風扇散熱系統，165W功耗",
+        price: 16990,
+        image: "https://img.pchome.com.tw/cs/items/DRADNCA900H4060T/000001_1705950000.jpg",
+        category: "GPU",
+        brand: "Gigabyte",
+        emoji: "🎮",
+        bgColor: "linear-gradient(135deg, #00d4aa, #007bff)",
+        specifications: {
+            "晶片組": "NVIDIA GeForce RTX 4060 Ti",
+            "記憶體": "16GB GDDR6",
+            "記憶體位寬": "128-bit",
+            "卡長": "28.2 cm",
+            "插槽寬度": "2.5槽",
+            "散熱系統": "三風扇 WINDFORCE",
+            "功耗": "165W",
+            "建議電源": "550W",
+            "品牌": "GIGABYTE 技嘉"
+        }
+    },
+    {
+        id: 44,
+        name: "GIGABYTE RTX4080 SUPER GAMING OC 16G",
+        description: "NVIDIA GeForce RTX 4080 SUPER，16GB GDDR6X，三風扇散熱系統，320W功耗",
+        price: 35990,
+        image: "https://img.pchome.com.tw/cs/items/DRADNDA900H4080S/000001_1706000000.jpg",
+        category: "GPU",
+        brand: "Gigabyte",
+        emoji: "🎮",
+        bgColor: "linear-gradient(135deg, #00d4aa, #007bff)",
+        specifications: {
+            "晶片組": "NVIDIA GeForce RTX 4080 SUPER",
+            "記憶體": "16GB GDDR6X",
+            "記憶體位寬": "256-bit",
+            "卡長": "32.8 cm",
+            "插槽寬度": "3.5槽",
+            "散熱系統": "三風扇 WINDFORCE",
+            "功耗": "320W",
+            "建議電源": "750W",
+            "品牌": "GIGABYTE 技嘉"
+        }
+    },
+    {
+        id: 45,
+        name: "GIGABYTE RTX4070 Ti SUPER GAMING OC 16G",
+        description: "NVIDIA GeForce RTX 4070 Ti SUPER，16GB GDDR6X，三風扇散熱系統，285W功耗",
+        price: 28990,
+        image: "https://img.pchome.com.tw/cs/items/DRADNEA900H4070TS/000001_1706100000.jpg",
+        category: "GPU",
+        brand: "Gigabyte",
+        emoji: "🎮",
+        bgColor: "linear-gradient(135deg, #00d4aa, #007bff)",
+        specifications: {
+            "晶片組": "NVIDIA GeForce RTX 4070 Ti SUPER",
+            "記憶體": "16GB GDDR6X",
+            "記憶體位寬": "256-bit",
+            "卡長": "31.5 cm",
+            "插槽寬度": "3槽",
+            "散熱系統": "三風扇 WINDFORCE",
+            "功耗": "285W",
+            "建議電源": "700W",
+            "品牌": "GIGABYTE 技嘉"
+        }
+    },
+    {
+        id: 46,
+        name: "GIGABYTE RTX4090 GAMING OC 24G",
+        description: "NVIDIA GeForce RTX 4090，24GB GDDR6X，三風扇散熱系統，450W功耗",
+        price: 52990,
+        image: "https://img.pchome.com.tw/cs/items/DRADNFA900H4090/000001_1706200000.jpg",
+        category: "GPU",
+        brand: "Gigabyte",
+        emoji: "🎮",
+        bgColor: "linear-gradient(135deg, #00d4aa, #007bff)",
+        specifications: {
+            "晶片組": "NVIDIA GeForce RTX 4090",
+            "記憶體": "24GB GDDR6X",
+            "記憶體位寬": "384-bit",
+            "卡長": "35.8 cm",
+            "插槽寬度": "4槽",
+            "散熱系統": "三風扇 WINDFORCE",
+            "功耗": "450W",
+            "建議電源": "850W",
+            "品牌": "GIGABYTE 技嘉"
+        }
+    },
+    {
+        id: 47,
+        name: "撼訊 RX7900XTX 24G-E/OC 紅魔顯示卡",
+        description: "AMD Radeon RX 7900 XTX，24GB GDDR6，三風扇散熱系統，PCIe Gen4支援",
+        price: 29990,
+        image: "https://img.pchome.com.tw/cs/items/DRADTUA900RX7900/000001_1749950000.jpg",
+        category: "GPU",
+        brand: "PowerColor",
+        emoji: "🚀",
+        bgColor: "linear-gradient(135deg, #ed1c24, #b91c1c)",
+        specifications: {
+            "晶片組": "AMD Radeon RX 7900 XTX",
+            "記憶體": "24GB GDDR6",
+            "記憶體位寬": "384-bit",
+            "PCIe版本": "PCIe Gen4",
+            "卡長": "32 cm",
+            "插槽寬度": "3槽",
+            "散熱系統": "三風扇紅魔散熱",
+            "建議電源": "800W",
+            "品牌": "撼訊 PowerColor"
+        }
+    },
+    {
+        id: 48,
+        name: "撼訊 RX7800XT 16G-E/OC 紅魔顯示卡",
+        description: "AMD Radeon RX 7800 XT，16GB GDDR6，三風扇散熱系統，PCIe Gen4支援",
+        price: 18990,
+        image: "https://img.pchome.com.tw/cs/items/DRADTVA900RX7800/000001_1750000000.jpg",
+        category: "GPU",
+        brand: "PowerColor",
+        emoji: "🚀",
+        bgColor: "linear-gradient(135deg, #ed1c24, #b91c1c)",
+        specifications: {
+            "晶片組": "AMD Radeon RX 7800 XT",
+            "記憶體": "16GB GDDR6",
+            "記憶體位寬": "256-bit",
+            "PCIe版本": "PCIe Gen4",
+            "卡長": "31 cm",
+            "插槽寬度": "2.9槽",
+            "散熱系統": "三風扇紅魔散熱",
+            "建議電源": "700W",
+            "品牌": "撼訊 PowerColor"
+        }
+    },
+    {
+        id: 49,
+        name: "撼訊 RX7700XT 12G-E/OC 紅魔顯示卡",
+        description: "AMD Radeon RX 7700 XT，12GB GDDR6，三風扇散熱系統，PCIe Gen4支援",
+        price: 15990,
+        image: "https://img.pchome.com.tw/cs/items/DRADTWA900RX7700/000001_1750100000.jpg",
+        category: "GPU",
+        brand: "PowerColor",
+        emoji: "🚀",
+        bgColor: "linear-gradient(135deg, #ed1c24, #b91c1c)",
+        specifications: {
+            "晶片組": "AMD Radeon RX 7700 XT",
+            "記憶體": "12GB GDDR6",
+            "記憶體位寬": "192-bit",
+            "PCIe版本": "PCIe Gen4",
+            "卡長": "30 cm",
+            "插槽寬度": "2.7槽",
+            "散熱系統": "三風扇紅魔散熱",
+            "建議電源": "650W",
+            "品牌": "撼訊 PowerColor"
+        }
+    },
+    {
+        id: 50,
+        name: "撼訊 RX6700XT 12G-E/OC 紅魔顯示卡",
+        description: "AMD Radeon RX 6700 XT，12GB GDDR6，三風扇散熱系統，PCIe Gen4支援",
+        price: 12990,
+        image: "https://img.pchome.com.tw/cs/items/DRADTXA900RX6700/000001_1750200000.jpg",
+        category: "GPU",
+        brand: "PowerColor",
+        emoji: "🚀",
+        bgColor: "linear-gradient(135deg, #ed1c24, #b91c1c)",
+        specifications: {
+            "晶片組": "AMD Radeon RX 6700 XT",
+            "記憶體": "12GB GDDR6",
+            "記憶體位寬": "192-bit",
+            "PCIe版本": "PCIe Gen4",
+            "卡長": "29 cm",
+            "插槽寬度": "2.5槽",
+            "散熱系統": "三風扇紅魔散熱",
+            "建議電源": "650W",
+            "品牌": "撼訊 PowerColor"
+        }
+    },
+    {
+        id: 51,
+        name: "ASUS ROG STRIX RTX5070-O12G-GAMING",
+        description: "NVIDIA GeForce RTX 5070，12GB GDDR7，三風扇散熱系統，ROG設計",
+        price: 42990,
+        image: "https://img.pchome.com.tw/cs/items/DRADKZA900J5070/000001_1754000000.jpg",
+        category: "GPU",
+        brand: "ASUS",
+        emoji: "🎯",
+        bgColor: "linear-gradient(135deg, #00d4aa, #007bff)",
+        specifications: {
+            "晶片組": "NVIDIA GeForce RTX 5070",
+            "記憶體": "12GB GDDR7",
+            "記憶體位寬": "192-bit",
+            "PCIe版本": "Gen5",
+            "卡長": "31.9 cm",
+            "散熱系統": "三風扇 ROG 散熱",
+            "功耗": "220W",
+            "建議電源": "650W",
+            "品牌": "ASUS 華碩",
+            "系列": "ROG STRIX Gaming"
+        }
+    },
+    {
+        id: 52,
+        name: "ASUS DUAL RTX5060-O8G-WHITE",
+        description: "NVIDIA GeForce RTX 5060，8GB GDDR7，雙風扇散熱系統，白色塗裝",
+        price: 16990,
+        image: "https://img.pchome.com.tw/cs/items/DRADKAB900J5060/000001_1754100000.jpg",
+        category: "GPU",
+        brand: "ASUS",
+        emoji: "🎯",
+        bgColor: "linear-gradient(135deg, #00d4aa, #007bff)",
+        specifications: {
+            "晶片組": "NVIDIA GeForce RTX 5060",
+            "記憶體": "8GB GDDR7",
+            "記憶體位寬": "128-bit",
+            "PCIe版本": "Gen5",
+            "卡長": "24.9 cm",
+            "散熱系統": "雙風扇 DUAL 散熱",
+            "功耗": "115W",
+            "建議電源": "550W",
+            "品牌": "ASUS 華碩",
+            "系列": "DUAL",
+            "顏色": "白色塗裝"
+        }
+    },
+    {
+        id: 53,
+        name: "ASUS TUF-RTX4070-O12G-GAMING",
+        description: "NVIDIA GeForce RTX 4070，12GB GDDR6X，三風扇散熱系統，軍規用料",
+        price: 19990,
+        image: "https://img.pchome.com.tw/cs/items/DRADKBB900J4070/000001_1754200000.jpg",
+        category: "GPU",
+        brand: "ASUS",
+        emoji: "🎯",
+        bgColor: "linear-gradient(135deg, #00d4aa, #007bff)",
+        specifications: {
+            "晶片組": "NVIDIA GeForce RTX 4070",
+            "記憶體": "12GB GDDR6X",
+            "記憶體位寬": "192-bit",
+            "PCIe版本": "Gen4",
+            "卡長": "30.1 cm",
+            "散熱系統": "三風扇 TUF 散熱",
+            "功耗": "200W",
+            "建議電源": "650W",
+            "品牌": "ASUS 華碩",
+            "系列": "TUF Gaming"
+        }
+    },
     
     // ===== 主機板 =====
     {
@@ -239,6 +596,198 @@ const products = [
             "儲存": "2x M.2 / 4x SATA3",
             "套裝內容": "含32GB DDR5-5600 FURY Beast記憶體",
             "保固": "五年原廠保固（需註冊）",
+            "品牌": "GIGABYTE 技嘉"
+        }
+    },
+    {
+        id: 54,
+        name: "ASUS PRIME Z790-P WIFI",
+        description: "Intel Z790晶片組，DDR5記憶體支援，LGA 1700插槽，Wi-Fi 6E，PCIe 5.0",
+        price: 5990,
+        image: "https://img.pchome.com.tw/cs/items/DSAJBYA900Z790P/000001_1715800000.jpg",
+        category: "主機板",
+        brand: "ASUS",
+        emoji: "⚡",
+        bgColor: "linear-gradient(135deg, #0071c5, #0044aa)",
+        specifications: {
+            "CPU插槽": "LGA 1700",
+            "晶片組": "Intel Z790",
+            "記憶體類型": "DDR5",
+            "尺寸規格": "ATX",
+            "CPU支援": "第12/13代Intel處理器",
+            "網路": "Wi-Fi 6E + 2.5G LAN",
+            "擴充": "PCIe 5.0 x16",
+            "品牌": "ASUS 華碩",
+            "系列": "PRIME"
+        }
+    },
+    {
+        id: 55,
+        name: "ASUS ROG MAXIMUS Z790 HERO",
+        description: "Intel Z790晶片組，DDR5記憶體支援，ROG頂級系列，RGB燈效，頂級用料",
+        price: 18990,
+        image: "https://img.pchome.com.tw/cs/items/DSAJBZA900Z790H/000001_1715850000.jpg",
+        category: "主機板",
+        brand: "ASUS",
+        emoji: "⚡",
+        bgColor: "linear-gradient(135deg, #0071c5, #0044aa)",
+        specifications: {
+            "CPU插槽": "LGA 1700",
+            "晶片組": "Intel Z790",
+            "記憶體類型": "DDR5",
+            "尺寸規格": "ATX",
+            "CPU支援": "第12/13代Intel處理器",
+            "特色": "ROG頂級系列",
+            "RGB燈效": "AURA Sync",
+            "品牌": "ASUS 華碩",
+            "系列": "ROG MAXIMUS"
+        }
+    },
+    {
+        id: 56,
+        name: "ASUS TUF GAMING Z790-PLUS WIFI",
+        description: "Intel Z790晶片組，DDR5記憶體支援，軍規用料，TUF系列，耐用穩定",
+        price: 7990,
+        image: "https://img.pchome.com.tw/cs/items/DSAJCAA900Z790T/000001_1715900000.jpg",
+        category: "主機板",
+        brand: "ASUS",
+        emoji: "⚡",
+        bgColor: "linear-gradient(135deg, #0071c5, #0044aa)",
+        specifications: {
+            "CPU插槽": "LGA 1700",
+            "晶片組": "Intel Z790",
+            "記憶體類型": "DDR5",
+            "尺寸規格": "ATX",
+            "CPU支援": "第12/13代Intel處理器",
+            "特色": "軍規用料TUF系列",
+            "網路": "Wi-Fi 6 + 2.5G LAN",
+            "品牌": "ASUS 華碩",
+            "系列": "TUF GAMING"
+        }
+    },
+    {
+        id: 57,
+        name: "MSI MAG Z790 TOMAHAWK WIFI",
+        description: "Intel Z790晶片組，DDR5記憶體支援，MSI MAG系列，優異散熱設計",
+        price: 7590,
+        image: "https://img.pchome.com.tw/cs/items/DSAJ2BA900Z790M/000001_1678200000.jpg",
+        category: "主機板",
+        brand: "MSI",
+        emoji: "⚙️",
+        bgColor: "linear-gradient(135deg, #ff6b35, #f7931e)",
+        specifications: {
+            "CPU插槽": "LGA 1700",
+            "晶片組": "Intel Z790",
+            "記憶體類型": "DDR5",
+            "尺寸規格": "ATX",
+            "CPU支援": "第12/13代Intel處理器",
+            "網路": "Wi-Fi 6E + 2.5G LAN",
+            "特色": "MAG系列優異散熱",
+            "品牌": "MSI 微星"
+        }
+    },
+    {
+        id: 58,
+        name: "MSI MPG Z790 CARBON WIFI",
+        description: "Intel Z790晶片組，DDR5記憶體支援，Carbon碳纖維外觀，RGB燈效",
+        price: 12590,
+        image: "https://img.pchome.com.tw/cs/items/DSAJ2CA900Z790C/000001_1678250000.jpg",
+        category: "主機板",
+        brand: "MSI",
+        emoji: "⚙️",
+        bgColor: "linear-gradient(135deg, #ff6b35, #f7931e)",
+        specifications: {
+            "CPU插槽": "LGA 1700",
+            "晶片組": "Intel Z790",
+            "記憶體類型": "DDR5",
+            "尺寸規格": "ATX",
+            "CPU支援": "第12/13代Intel處理器",
+            "特色": "Carbon碳纖維外觀",
+            "RGB燈效": "Mystic Light",
+            "品牌": "MSI 微星"
+        }
+    },
+    {
+        id: 59,
+        name: "MSI PRO Z790-A WIFI",
+        description: "Intel Z790晶片組，DDR5記憶體支援，商務用途，穩定可靠",
+        price: 5590,
+        image: "https://img.pchome.com.tw/cs/items/DSAJ2DA900Z790P/000001_1678300000.jpg",
+        category: "主機板",
+        brand: "MSI",
+        emoji: "⚙️",
+        bgColor: "linear-gradient(135deg, #ff6b35, #f7931e)",
+        specifications: {
+            "CPU插槽": "LGA 1700",
+            "晶片組": "Intel Z790",
+            "記憶體類型": "DDR5",
+            "尺寸規格": "ATX",
+            "CPU支援": "第12/13代Intel處理器",
+            "特色": "商務用途設計",
+            "網路": "Wi-Fi 6 + GbE LAN",
+            "品牌": "MSI 微星"
+        }
+    },
+    {
+        id: 60,
+        name: "MSI MAG B650M MORTAR WIFI",
+        description: "AMD B650晶片組，Micro ATX，DDR5記憶體支援，AM5插槽，緊湊設計",
+        price: 4990,
+        image: "https://img.pchome.com.tw/cs/items/DSAJ2EA900B650M/000001_1678350000.jpg",
+        category: "主機板",
+        brand: "MSI",
+        emoji: "⚙️",
+        bgColor: "linear-gradient(135deg, #ff6b35, #f7931e)",
+        specifications: {
+            "CPU插槽": "AM5",
+            "晶片組": "AMD B650",
+            "記憶體類型": "DDR5",
+            "尺寸規格": "Micro ATX",
+            "CPU支援": "AMD Ryzen 7000系列",
+            "網路": "Wi-Fi 6 + 2.5G LAN",
+            "特色": "緊湊設計MAG系列",
+            "品牌": "MSI 微星"
+        }
+    },
+    {
+        id: 61,
+        name: "Gigabyte Z790 AORUS ELITE AX",
+        description: "Intel Z790晶片組，DDR5記憶體支援，AORUS系列，RGB燈效，PCIe 5.0",
+        price: 8490,
+        image: "https://img.pchome.com.tw/cs/items/DSAJ3LA900Z790A/000001_1751800000.jpg",
+        category: "主機板",
+        brand: "Gigabyte",
+        emoji: "🔧",
+        bgColor: "linear-gradient(135deg, #00d4aa, #007bff)",
+        specifications: {
+            "CPU插槽": "LGA 1700",
+            "晶片組": "Intel Z790",
+            "記憶體類型": "DDR5",
+            "尺寸規格": "ATX",
+            "CPU支援": "第12/13代Intel處理器",
+            "網路": "Wi-Fi 6E + 2.5G LAN",
+            "特色": "AORUS系列RGB燈效",
+            "品牌": "GIGABYTE 技嘉"
+        }
+    },
+    {
+        id: 62,
+        name: "Gigabyte Z790 GAMING X AX",
+        description: "Intel Z790晶片組，DDR5記憶體支援，遊戲專用設計，優異散熱",
+        price: 6490,
+        image: "https://img.pchome.com.tw/cs/items/DSAJ3MA900Z790G/000001_1751850000.jpg",
+        category: "主機板",
+        brand: "Gigabyte",
+        emoji: "🔧",
+        bgColor: "linear-gradient(135deg, #00d4aa, #007bff)",
+        specifications: {
+            "CPU插槽": "LGA 1700",
+            "晶片組": "Intel Z790",
+            "記憶體類型": "DDR5",
+            "尺寸規格": "ATX",
+            "CPU支援": "第12/13代Intel處理器",
+            "特色": "遊戲專用設計",
+            "網路": "Wi-Fi 6 + 2.5G LAN",
             "品牌": "GIGABYTE 技嘉"
         }
     },
@@ -315,6 +864,122 @@ const products = [
             "特價": "NT$2,697"
         }
     },
+    {
+        id: 63,
+        name: "Corsair Vengeance LPX DDR4-3200 32GB Kit (2x16GB) CL16",
+        description: "DDR4-3200 MT/s，32GB雙通道套件，CL16延遲，低高度設計，兼容性極佳",
+        price: 2995,
+        image: "https://img.pchome.com.tw/cs/items/CORSAIR_DDR4_32GB/000001_1736138237.jpg",
+        category: "記憶體",
+        brand: "Corsair",
+        emoji: "🧠",
+        bgColor: "linear-gradient(135deg, #ffd700, #ffb347)",
+        specifications: {
+            "產品型號": "CMK32GX4M2E3200C16",
+            "容量": "32GB (2x16GB)",
+            "記憶體類型": "DDR4 DRAM",
+            "速度": "3200 MT/s",
+            "延遲": "CL16",
+            "散熱片": "鋁製低高度散熱片",
+            "品牌": "Corsair 海盜船"
+        }
+    },
+    {
+        id: 64,
+        name: "Corsair Dominator Platinum RGB DDR5-6000 32GB Kit",
+        description: "DDR5-6000 MT/s，32GB套件，RGB燈效，頂級散熱設計，超頻專用",
+        price: 6995,
+        image: "https://img.pchome.com.tw/cs/items/CORSAIR_DDR5_DOMINATOR/000001_1736238237.jpg",
+        category: "記憶體",
+        brand: "Corsair",
+        emoji: "🧠",
+        bgColor: "linear-gradient(135deg, #ffd700, #ffb347)",
+        specifications: {
+            "產品系列": "Dominator Platinum RGB",
+            "容量": "32GB (2x16GB)",
+            "記憶體類型": "DDR5 DRAM",
+            "速度": "6000 MT/s",
+            "RGB燈效": "12個獨立可控LED",
+            "散熱設計": "頂級鋁製散熱片",
+            "品牌": "Corsair 海盜船"
+        }
+    },
+    {
+        id: 65,
+        name: "G.Skill Ripjaws V DDR4-3600 32GB Kit (2x16GB) CL16",
+        description: "DDR4-3600 MT/s，32GB套件，CL16延遲，遊戲最佳化，高相容性",
+        price: 3200,
+        image: "https://img.pchome.com.tw/cs/items/GSKILL_DDR4_RIPJAWS/000001_1736338237.jpg",
+        category: "記憶體",
+        brand: "G.Skill",
+        emoji: "⚡",
+        bgColor: "linear-gradient(135deg, #ff6b35, #f7931e)",
+        specifications: {
+            "產品系列": "Ripjaws V",
+            "容量": "32GB (2x16GB)",
+            "記憶體類型": "DDR4 DRAM",
+            "速度": "3600 MT/s",
+            "延遲": "CL16",
+            "品牌": "G.Skill 芝奇"
+        }
+    },
+    {
+        id: 66,
+        name: "G.Skill Flare X5 DDR5-6000 32GB Kit AMD優化版",
+        description: "DDR5-6000 MT/s，32GB套件，AMD EXPO支援，AM5平台最佳化",
+        price: 4800,
+        image: "https://img.pchome.com.tw/cs/items/GSKILL_DDR5_FLAREX5/000001_1736438237.jpg",
+        category: "記憶體",
+        brand: "G.Skill",
+        emoji: "⚡",
+        bgColor: "linear-gradient(135deg, #ff6b35, #f7931e)",
+        specifications: {
+            "產品系列": "Flare X5",
+            "容量": "32GB (2x16GB)",
+            "記憶體類型": "DDR5 DRAM",
+            "速度": "6000 MT/s",
+            "AMD EXPO": "支援",
+            "品牌": "G.Skill 芝奇"
+        }
+    },
+    {
+        id: 67,
+        name: "Kingston FURY Renegade DDR5-6400 32GB Kit",
+        description: "DDR5-6400 MT/s，32GB套件，極致超頻性能，RGB燈效版本",
+        price: 5500,
+        image: "https://img.pchome.com.tw/cs/items/KINGSTON_DDR5_RENEGADE/000001_1736538237.jpg",
+        category: "記憶體",
+        brand: "Kingston",
+        emoji: "🛡️",
+        bgColor: "linear-gradient(135deg, #000000, #333333)",
+        specifications: {
+            "產品系列": "FURY Renegade RGB",
+            "容量": "32GB (2x16GB)",
+            "記憶體類型": "DDR5 DRAM",
+            "速度": "6400 MT/s",
+            "RGB燈效": "支援",
+            "品牌": "Kingston 金士頓"
+        }
+    },
+    {
+        id: 68,
+        name: "Kingston ValueRAM DDR4-2666 16GB",
+        description: "DDR4-2666 MT/s，16GB單條，穩定可靠，商用首選",
+        price: 1200,
+        image: "https://img.pchome.com.tw/cs/items/KINGSTON_DDR4_VALUE/000001_1736638237.jpg",
+        category: "記憶體",
+        brand: "Kingston",
+        emoji: "🛡️",
+        bgColor: "linear-gradient(135deg, #000000, #333333)",
+        specifications: {
+            "產品系列": "ValueRAM",
+            "容量": "16GB",
+            "記憶體類型": "DDR4 DRAM",
+            "速度": "2666 MT/s",
+            "特色": "商用級穩定性",
+            "品牌": "Kingston 金士頓"
+        }
+    },
     
     // ===== 儲存裝置 =====
     {
@@ -377,7 +1042,130 @@ const products = [
         image: "./images/Seagate FireCuda 530 2TB NVMe SSD.png",
         category: "儲存",
         brand: "Seagate",
-        emoji: "🔥"
+        emoji: "🔥",
+        bgColor: "linear-gradient(135deg, #4fc3f7, #29b6f6)",
+        specifications: {
+            "產品型號": "ST2000LX001",
+            "容量": "2TB",
+            "介面": "PCIe 4.0 NVMe M.2",
+            "讀取速度": "7300 MB/s",
+            "寫入速度": "6900 MB/s",
+            "品牌": "Seagate 希捷"
+        }
+    },
+    {
+        id: 69,
+        name: "Samsung 980 PRO 1TB NVMe M.2 SSD",
+        description: "PCIe Gen4，讀取7000MB/s，寫入5000MB/s，高性能遊戲SSD",
+        price: 3299,
+        image: "https://img.pchome.com.tw/cs/items/SAMSUNG_980PRO_1TB/000001_1736738237.jpg",
+        category: "儲存",
+        brand: "Samsung",
+        emoji: "💾",
+        bgColor: "linear-gradient(135deg, #1f8ef1, #1565c0)",
+        specifications: {
+            "產品型號": "MZ-V8P1T0BW",
+            "容量": "1TB",
+            "介面": "PCIe Gen4 NVMe M.2",
+            "讀取速度": "7000 MB/s",
+            "寫入速度": "5000 MB/s",
+            "品牌": "Samsung 三星"
+        }
+    },
+    {
+        id: 70,
+        name: "Samsung 970 EVO Plus 2TB NVMe M.2 SSD",
+        description: "PCIe Gen3，讀取3500MB/s，寫入3300MB/s，高CP值選擇",
+        price: 4599,
+        image: "https://img.pchome.com.tw/cs/items/SAMSUNG_970EVO_2TB/000001_1736838237.jpg",
+        category: "儲存",
+        brand: "Samsung",
+        emoji: "💾",
+        bgColor: "linear-gradient(135deg, #1f8ef1, #1565c0)",
+        specifications: {
+            "產品型號": "MZ-V7S2T0BW",
+            "容量": "2TB",
+            "介面": "PCIe Gen3 NVMe M.2",
+            "讀取速度": "3500 MB/s",
+            "寫入速度": "3300 MB/s",
+            "品牌": "Samsung 三星"
+        }
+    },
+    {
+        id: 71,
+        name: "WD Blue SN570 1TB NVMe M.2 SSD",
+        description: "PCIe Gen3，讀取3500MB/s，寫入3000MB/s，日常使用最佳選擇",
+        price: 2290,
+        image: "https://img.pchome.com.tw/cs/items/WD_BLUE_SN570_1TB/000001_1736938237.jpg",
+        category: "儲存",
+        brand: "WD",
+        emoji: "🎮",
+        bgColor: "linear-gradient(135deg, #000000, #333333)",
+        specifications: {
+            "產品型號": "WDS100T3B0C",
+            "容量": "1TB",
+            "介面": "PCIe Gen3 NVMe M.2",
+            "讀取速度": "3500 MB/s",
+            "寫入速度": "3000 MB/s",
+            "品牌": "WD 威騰"
+        }
+    },
+    {
+        id: 72,
+        name: "WD BLACK SN770 1TB NVMe M.2 SSD",
+        description: "PCIe Gen4，讀取5150MB/s，寫入4900MB/s，遊戲加速專用",
+        price: 3690,
+        image: "https://img.pchome.com.tw/cs/items/WD_BLACK_SN770_1TB/000001_1737038237.jpg",
+        category: "儲存",
+        brand: "WD",
+        emoji: "🎮",
+        bgColor: "linear-gradient(135deg, #000000, #333333)",
+        specifications: {
+            "產品型號": "WDS100T3X0E",
+            "容量": "1TB",
+            "介面": "PCIe Gen4 NVMe M.2",
+            "讀取速度": "5150 MB/s",
+            "寫入速度": "4900 MB/s",
+            "品牌": "WD 威騰"
+        }
+    },
+    {
+        id: 73,
+        name: "Seagate BarraCuda 120 1TB SATA SSD",
+        description: "2.5吋 SATA SSD，讀取560MB/s，寫入540MB/s，升級首選",
+        price: 1890,
+        image: "https://img.pchome.com.tw/cs/items/SEAGATE_BARRACUDA_1TB/000001_1737138237.jpg",
+        category: "儲存",
+        brand: "Seagate",
+        emoji: "🔥",
+        bgColor: "linear-gradient(135deg, #4fc3f7, #29b6f6)",
+        specifications: {
+            "產品型號": "ZA1000CM1A003",
+            "容量": "1TB",
+            "介面": "2.5吋 SATA 6Gb/s",
+            "讀取速度": "560 MB/s",
+            "寫入速度": "540 MB/s",
+            "品牌": "Seagate 希捷"
+        }
+    },
+    {
+        id: 74,
+        name: "Seagate IronWolf Pro 4TB NAS硬碟",
+        description: "7200RPM，256MB快取，專為NAS設計，24x7運作",
+        price: 5290,
+        image: "https://img.pchome.com.tw/cs/items/SEAGATE_IRONWOLF_4TB/000001_1737238237.jpg",
+        category: "儲存",
+        brand: "Seagate",
+        emoji: "🔥",
+        bgColor: "linear-gradient(135deg, #4fc3f7, #29b6f6)",
+        specifications: {
+            "產品型號": "ST4000NE001",
+            "容量": "4TB",
+            "轉速": "7200 RPM",
+            "快取": "256MB",
+            "特色": "NAS專用24x7運作",
+            "品牌": "Seagate 希捷"
+        }
     },
     
     // ===== 電源供應器 =====
@@ -409,7 +1197,130 @@ const products = [
         image: "./images/be quiet! Straight Power 11 850W.png",
         category: "電源",
         brand: "be quiet!",
-        emoji: "🔇"
+        emoji: "🔇",
+        bgColor: "linear-gradient(135deg, #424242, #212121)",
+        specifications: {
+            "瓦數": "850W",
+            "效率": "80 Plus Gold",
+            "模組化": "全模組化",
+            "風扇": "Silent Wings 3 135mm",
+            "保固": "5年保固",
+            "品牌": "be quiet!"
+        }
+    },
+    {
+        id: 75,
+        name: "Corsair RM1000x 1000W 80+ Gold",
+        description: "1000W全模組化，80 Plus Gold效率，135mm風扇，10年保固，支援RTX 4090",
+        price: 5800,
+        image: "./images/Corsair RM1000x 1000W 80+ Gold.png",
+        category: "電源",
+        brand: "Corsair",
+        emoji: "🔌",
+        bgColor: "linear-gradient(135deg, #667eea, #764ba2)",
+        specifications: {
+            "瓦數": "1000W",
+            "效率": "80 Plus Gold",
+            "模組化": "全模組化",
+            "風扇": "135mm零轉速風扇",
+            "保固": "10年保固",
+            "品牌": "Corsair 海盜船"
+        }
+    },
+    {
+        id: 76,
+        name: "Corsair CV650 650W 80+ Bronze",
+        description: "650W非模組化，80 Plus Bronze效率，120mm風扇，3年保固，入門首選",
+        price: 2200,
+        image: "./images/Corsair CV650 650W.png",
+        category: "電源",
+        brand: "Corsair",
+        emoji: "🔌",
+        bgColor: "linear-gradient(135deg, #667eea, #764ba2)",
+        specifications: {
+            "瓦數": "650W",
+            "效率": "80 Plus Bronze",
+            "模組化": "非模組化",
+            "風扇": "120mm風扇",
+            "保固": "3年保固",
+            "品牌": "Corsair 海盜船"
+        }
+    },
+    {
+        id: 77,
+        name: "Seasonic Prime TX-1000 1000W 80+ Titanium",
+        description: "1000W全模組化，80 Plus Titanium效率，頂級電源，12年保固",
+        price: 8500,
+        image: "./images/Seasonic Prime TX-1000.png",
+        category: "電源",
+        brand: "Seasonic",
+        emoji: "⚡",
+        bgColor: "linear-gradient(135deg, #4fc3f7, #29b6f6)",
+        specifications: {
+            "瓦數": "1000W",
+            "效率": "80 Plus Titanium",
+            "模組化": "全模組化",
+            "風扇": "135mm FDB風扇",
+            "保固": "12年保固",
+            "品牌": "Seasonic 海韻"
+        }
+    },
+    {
+        id: 78,
+        name: "Seasonic Core GM-650 650W 80+ Gold",
+        description: "650W半模組化，80 Plus Gold效率，120mm風扇，7年保固，高CP值",
+        price: 2800,
+        image: "./images/Seasonic Core GM-650.png",
+        category: "電源",
+        brand: "Seasonic",
+        emoji: "⚡",
+        bgColor: "linear-gradient(135deg, #4fc3f7, #29b6f6)",
+        specifications: {
+            "瓦數": "650W",
+            "效率": "80 Plus Gold",
+            "模組化": "半模組化",
+            "風扇": "120mm FDB風扇",
+            "保固": "7年保固",
+            "品牌": "Seasonic 海韻"
+        }
+    },
+    {
+        id: 79,
+        name: "be quiet! Dark Power Pro 12 1200W 80+ Titanium",
+        description: "1200W全模組化，80 Plus Titanium效率，頂級靜音設計，5年保固",
+        price: 9800,
+        image: "./images/be quiet! Dark Power Pro 12 1200W.png",
+        category: "電源",
+        brand: "be quiet!",
+        emoji: "🔇",
+        bgColor: "linear-gradient(135deg, #424242, #212121)",
+        specifications: {
+            "瓦數": "1200W",
+            "效率": "80 Plus Titanium",
+            "模組化": "全模組化",
+            "風扇": "Silent Wings Pro 4 135mm",
+            "保固": "5年保固",
+            "品牌": "be quiet!"
+        }
+    },
+    {
+        id: 80,
+        name: "be quiet! System Power 10 600W 80+ Bronze",
+        description: "600W非模組化，80 Plus Bronze效率，120mm風扇，3年保固，經濟實惠",
+        price: 1800,
+        image: "./images/be quiet! System Power 10 600W.png",
+        category: "電源",
+        brand: "be quiet!",
+        emoji: "🔇",
+        bgColor: "linear-gradient(135deg, #424242, #212121)",
+        specifications: {
+            "瓦數": "600W",
+            "效率": "80 Plus Bronze",
+            "模組化": "非模組化",
+            "風扇": "120mm風扇",
+            "保固": "3年保固",
+            "品牌": "be quiet!"
+        }
     },
     
     // ===== 機殼 =====
@@ -779,6 +1690,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderProducts();
     updateCartUI();
     setupEventListeners();
+    updateBrandFilter();
 });
 
 // 渲染產品
@@ -855,6 +1767,55 @@ function sortProducts(products) {
     }
 }
 
+// 更新品牌篩選選項
+function updateBrandFilter() {
+    const brandCheckboxContainer = document.querySelector('.brand-checkboxes');
+    if (!brandCheckboxContainer) return;
+    
+    // 獲取當前分類下的所有品牌
+    let availableBrands = [];
+    
+    if (currentCategory === 'all') {
+        // 如果是全部商品，顯示所有品牌
+        availableBrands = [...new Set(products.map(product => product.brand))].sort();
+    } else {
+        // 只顯示當前分類下的品牌
+        availableBrands = [...new Set(
+            products
+                .filter(product => product.category === currentCategory)
+                .map(product => product.brand)
+        )].sort();
+    }
+    
+    // 清空現有的品牌選項
+    brandCheckboxContainer.innerHTML = '';
+    
+    // 生成新的品牌選項
+    availableBrands.forEach(brand => {
+        const label = document.createElement('label');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = brand;
+        checkbox.checked = currentBrands.includes(brand);
+        
+        // 添加事件監聽器
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                if (!currentBrands.includes(this.value)) {
+                    currentBrands.push(this.value);
+                }
+            } else {
+                currentBrands = currentBrands.filter(brand => brand !== this.value);
+            }
+            renderProducts();
+        });
+        
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(' ' + brand));
+        brandCheckboxContainer.appendChild(label);
+    });
+}
+
 // 設置事件監聽器
 function setupEventListeners() {
     cartBtn.addEventListener('click', toggleCart);
@@ -878,21 +1839,18 @@ function setupEventListeners() {
             
             // 更新當前分類
             currentCategory = this.dataset.category;
+            
+            // 清除品牌篩選選項
+            currentBrands = [];
+            
+            // 更新品牌篩選選項顯示
+            updateBrandFilter();
+            
             renderProducts();
         });
     });
     
-    // 品牌篩選
-    document.querySelectorAll('.brand-checkboxes input').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            if (this.checked) {
-                currentBrands.push(this.value);
-            } else {
-                currentBrands = currentBrands.filter(brand => brand !== this.value);
-            }
-            renderProducts();
-        });
-    });
+    // 品牌篩選事件監聽器已在 updateBrandFilter() 函數中動態設置
     
     // 排序
     const sortSelect = document.getElementById('sort-select');
