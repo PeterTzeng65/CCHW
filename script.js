@@ -1705,6 +1705,44 @@ function loadProductsFromStorage() {
     return products;
 }
 
+// 重新載入並更新商品顯示
+function refreshProductsFromStorage() {
+    console.log('重新載入商品數據...');
+    const loadedProducts = loadProductsFromStorage();
+    
+    // 更新全域商品變數
+    window.products = loadedProducts;
+    
+    // 重新渲染商品
+    renderProducts();
+    
+    // 更新品牌篩選
+    updateBrandFilter();
+    
+    console.log('商品數據已更新，顯示', loadedProducts.length, '個商品');
+}
+
+// 檢查商品數據是否有更新
+let lastProductCount = 0;
+function checkForProductUpdates() {
+    try {
+        const productsData = localStorage.getItem('productsDatabase');
+        if (productsData) {
+            const products = JSON.parse(productsData);
+            const currentCount = products.length;
+            
+            if (currentCount !== lastProductCount && lastProductCount > 0) {
+                console.log(`檢測到商品數據變更：${lastProductCount} -> ${currentCount}`);
+                refreshProductsFromStorage();
+            }
+            
+            lastProductCount = currentCount;
+        }
+    } catch (error) {
+        console.error('檢查商品更新時發生錯誤:', error);
+    }
+}
+
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
     // 等待數據遷移完成後再初始化
@@ -1716,12 +1754,26 @@ document.addEventListener('DOMContentLoaded', function() {
             window.products = loadedProducts;
         }
         
+        // 設定初始商品數量以供後續比較
+        lastProductCount = window.products.length;
+        
         renderProducts();
         updateCartUI();
         setupEventListeners();
         updateBrandFilter();
+        
+        // 每5秒檢查一次商品數據更新
+        setInterval(checkForProductUpdates, 5000);
+        
+        console.log('前台初始化完成，監控商品數據變更中...');
     }, 1100); // 略晚於遷移腳本的執行時間
 });
+
+// 添加手動重新整理按鈕功能（可選）
+function manualRefreshProducts() {
+    console.log('手動重新整理商品...');
+    refreshProductsFromStorage();
+}
 
 // 渲染產品
 function renderProducts() {
