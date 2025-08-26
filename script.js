@@ -1784,7 +1784,7 @@ function manualRefreshProducts() {
 // 渲染產品
 function renderProducts() {
     console.log('renderProducts() 被調用');
-    console.log('當前products總數:', products.length);
+    console.log('當前products總數:', window.products.length);
     console.log('當前分類篩選:', currentCategory);
     console.log('當前品牌篩選:', currentBrands);
     
@@ -1838,7 +1838,7 @@ function renderProducts() {
 
 // 篩選產品
 function filterProducts() {
-    return products.filter(product => {
+    return window.products.filter(product => {
         // 分類篩選
         const categoryMatch = currentCategory === 'all' || product.category === currentCategory;
         
@@ -1875,11 +1875,11 @@ function updateBrandFilter() {
     
     if (currentCategory === 'all') {
         // 如果是全部商品，顯示所有品牌
-        availableBrands = [...new Set(products.map(product => product.brand))].sort();
+        availableBrands = [...new Set(window.products.map(product => product.brand))].sort();
     } else {
         // 只顯示當前分類下的品牌
         availableBrands = [...new Set(
-            products
+            window.products
                 .filter(product => product.category === currentCategory)
                 .map(product => product.brand)
         )].sort();
